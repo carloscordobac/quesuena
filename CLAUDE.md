@@ -3,7 +3,7 @@
 Contexto para trabajar en este repositorio con Claude Code.
 
 ## Qué es
-Web estática en español. Un círculo grande: se toca y suena un sonido real al azar; la página se tiñe con el color de su categoría y muestra el nombre. Hay un modo «Adivinar antes de ver». Sin cuentas, sin backend, sin cookies. El progreso se guarda solo en `localStorage`.
+Web estática en español. Un círculo grande: se toca y suena un sonido real al azar; la página se tiñe con el color de su categoría y muestra el nombre. Hay un modo «Adivinar antes de ver». Sin cuentas ni backend. El progreso se guarda solo en `localStorage`. Analítica (Google Analytics 4) únicamente con consentimiento previo.
 
 ## Stack y comandos
 Astro (salida estática) + TypeScript + CSS propio (sin Tailwind, sin frameworks de UI). Web Audio para reproducir. Despliegue: GitHub → Cloudflare Pages.
@@ -24,6 +24,11 @@ Astro (salida estática) + TypeScript + CSS propio (sin Tailwind, sin frameworks
 - Cada sonido lleva autor, título, licencia y URL de origen reales. Nunca inventes una atribución: si no se puede verificar, no se añade.
 - `origin`: `grabacion` (real), `recreacion` o `sintetico`. Los dinosaurios nunca son grabaciones: van como `recreacion`.
 - No incrustes audio en base64 ni en el HTML. Los mp3 viven en `public/audio/` (o en `PUBLIC_AUDIO_BASE`).
+
+## Privacidad y analítica
+- **Nada de scripts de terceros que carguen antes del consentimiento.** GA solo se carga desde `src/scripts/analytics.ts` tras un «Aceptar» explícito (`consent.ts`) y solo en los hostnames de `GA_HOSTS` (`src/lib/site.ts`). Nunca pegues un fragmento en el `<head>`.
+- Sin señales de Google ni anuncios; los eventos no llevan datos personales ni identificadores propios (la web la puede usar gente menor de edad).
+- Si añades eventos, cookies o terceros, actualiza `/privacidad`.
 
 ## Marca y estilo
 - Colores: Tinta `#131A2B`, Papel `#F7F8FB` y un tono por categoría (ámbar `#F2A93B`, bermellón `#E8553D`, índigo `#5A5BD9`, cian `#1FA6D6`, verde `#45B36B`). Los tonos por categoría se definen en `collections.json` (`hue`), no en el CSS.

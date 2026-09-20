@@ -47,6 +47,7 @@ En el proyecto de Pages → *Custom domains* → *Set up a custom domain* → `q
 - [ ] `https://quesuena.es/creditos/` lista los 50 sonidos con su licencia.
 - [ ] Vista previa al compartir: pega la URL en WhatsApp, LinkedIn o el [depurador de Facebook](https://developers.facebook.com/tools/debug/).
 - [ ] `https://quesuena.es/sitemap-index.xml` y `/robots.txt` responden.
+- [ ] No hay peticiones a Google antes de aceptar: con las herramientas de desarrollo (Red), sin decidir o tras «Rechazar» no aparece nada de `googletagmanager.com` ni cookies `_ga`. Tras «Aceptar» sí, y llegan eventos en Analytics → Informes en tiempo real.
 - [ ] Lighthouse en móvil: rendimiento y accesibilidad por encima de 90.
 
 ## 5. Día a día
@@ -63,4 +64,4 @@ git push -u origin nueva-coleccion-objetos   # Pages crea una URL de prueba de l
 
 - **Estadísticas sin cookies**: Cloudflare → *Web Analytics* → añade el sitio. Con Pages basta activarlo desde el propio proyecto (*Metrics → Enable Web Analytics*), sin tocar el código.
 - **Audio en R2**: cuando el audio crezca, crea un bucket, súbelo (`rclone sync public/audio r2:quesuena-audio`), conéctalo a `audio.quesuena.es` con CORS abierto para `https://quesuena.es` y define en Pages `PUBLIC_AUDIO_BASE=https://audio.quesuena.es/`. Con esa variable definida (en Pages y en tu `.env` local) el build deja de exigir los mp3 en `public/audio/`, así que puedes sacarlos del repositorio. Guarda los originales en otro sitio: el repo dejaría de ser su copia de seguridad.
-- **Content-Security-Policy**: no está activada. Si la quieres, añade una línea a `public/_headers` y pruébala en una rama.
+- **Content-Security-Policy**: no está activada. Si la quieres, añade una línea a `public/_headers` y pruébala en una rama. Tendría que permitir `https://www.googletagmanager.com` (script) y `https://*.google-analytics.com` (connect), o la analítica dejará de funcionar.

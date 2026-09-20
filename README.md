@@ -70,6 +70,13 @@ Repositorio en GitHub → proyecto en Cloudflare Pages → dominio `quesuena.es`
 - Build output directory: `dist`
 - Variable de entorno: `NODE_VERSION` = `22`
 
+## Privacidad y analítica
+
+Sin cuentas ni backend. El progreso vive solo en el `localStorage` del navegador. Con el permiso de quien visita («Aceptar» en el aviso de cookies) se usa Google Analytics 4, solo en quesuena.es, sin señales de Google ni anuncios. Se miden visitas y estos eventos: `play_sound`, `reveal_sound`, `replay_sound`, `filter_collection` y `toggle_guess`. Sin aceptar no hay ninguna petición a Google. Detalle para el público en [/privacidad](src/pages/privacidad.astro).
+
+- Dominios donde se carga: `GA_HOSTS` en `src/lib/site.ts`.
+- Desactivarla del todo (sin aviso ni botón «Cookies»): define `PUBLIC_GA_ID=` vacío en el entorno de build (`.env` o Cloudflare Pages).
+
 ## Marca
 
 Identidad «C · Colores»: cinco arcos (uno por categoría) y un punto central; títulos en DynaPuff y texto en Figtree, ambas autoalojadas con Fontsource. Colores, usos y ficheros en [`brand/README.md`](brand/README.md).
