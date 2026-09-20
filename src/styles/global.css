@@ -542,10 +542,6 @@ summary::-webkit-details-marker {
   max-width: 60ch;
   font-size: 0.95rem;
 }
-.consent-text a {
-  margin-left: 6px;
-  font-weight: 600;
-}
 .consent-actions {
   display: flex;
   gap: 12px;
