@@ -1,5 +1,6 @@
 import { createPlayer } from './audio';
 import { createRing } from './ring';
+import { track } from './analytics';
 
 /* ---------- Tipos (coinciden con src/lib/catalog.ts → toManifest) ---------- */
 interface Sound {
@@ -122,6 +123,10 @@ function categoryName(sound: Sound): string {
     if (!m.sounds.includes(sound)) continue;
     return m.categories.find((k) => k.id === sound.cat)?.name ?? '';
   }
+  return '';
+}
+function collectionOf(sound: Sound): string {
+  for (const [id, m] of manifests) if (m.sounds.includes(sound)) return id;
   return '';
 }
 function soundById(id: string): Sound | undefined {
@@ -280,6 +285,7 @@ function buildFilters(): void {
 
 function setFilter(id: string): void {
   state.filter = id;
+  track('filter_collection', { collection: id });
   bag = [];
   lastId = null;
   filtersEl.querySelectorAll<HTMLButtonElement>('.chip').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.id === id)));
@@ -289,6 +295,11 @@ function setFilter(id: string): void {
 }
 
 /* ---------- Reproducción ---------- */
+// `guess` = el sonido se ha reproducido sin mostrar su nombre (modo adivinar).
+function trackPlay(s: Sound, source: 'random' | 'collection', guess: boolean): void {
+  track('play_sound', { sound_id: s.id, collection: collectionOf(s), category: s.cat, source, guess });
+}
+
 async function start(sound: Sound): Promise<'ok' | 'skip' | 'fail'> {
   const res = await player.play(sound);
   if (res.status === 'superseded') return 'skip';
@@ -312,6 +323,7 @@ async function playRandom(): Promise<void> {
   state.current = s;
   state.revealed = !state.guess;
   if ((await start(s)) !== 'ok') return;
+  trackPlay(s, 'random', !state.revealed);
   if (state.revealed) heard.add(s.id);
   save();
   render(true);
@@ -324,6 +336,7 @@ async function playSpecific(s: Sound): Promise<void> {
   state.current = s;
   state.revealed = true;
   if ((await start(s)) !== 'ok') return;
+  trackPlay(s, 'collection', false);
   heard.add(s.id);
   save();
   render(true);
@@ -335,12 +348,16 @@ playBtn.addEventListener('click', () => void playRandom());
 replayBtn.addEventListener('click', async () => {
   if (!state.current) return;
   player.unlock();
-  if ((await start(state.current)) === 'ok' && state.revealed) stretch();
+  const s = state.current;
+  if ((await start(s)) !== 'ok') return;
+  track('replay_sound', { sound_id: s.id });
+  if (state.revealed) stretch();
 });
 
 revealBtn.addEventListener('click', () => {
   if (!state.current) return;
   state.revealed = true;
+  track('reveal_sound', { sound_id: state.current.id });
   heard.add(state.current.id);
   save();
   render(true);
@@ -350,6 +367,7 @@ revealBtn.addEventListener('click', () => {
 guessBtn.addEventListener('click', () => {
   state.guess = !state.guess;
   guessBtn.setAttribute('aria-checked', String(state.guess));
+  track('toggle_guess', { enabled: state.guess });
   save();
 });
 
