@@ -6,4 +6,6 @@ export default defineConfig({
   site: 'https://quesuena.es',
   integrations: [sitemap()],
   build: { assets: '_astro' },
+  // Los scripts van siempre como fichero, nunca incrustados en el HTML (así el HTML no menciona terceros).
+  vite: { build: { assetsInlineLimit: 0 } },
 });

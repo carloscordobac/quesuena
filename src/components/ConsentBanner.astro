@@ -1,0 +1,14 @@
+---
+/* Aviso de cookies. Va al principio del DOM (teclado y lector de pantalla) y se coloca abajo con CSS.
+   Empieza oculto: consent.ts lo muestra solo si hace falta preguntar. */
+---
+<div class="consent" id="consent" role="region" aria-label="Aviso de cookies" tabindex="-1" hidden>
+  <p class="consent-text">
+    Usamos Google Analytics para saber cuánta gente usa ¿Qué suena? y mejorarlo. Solo si aceptas.
+    <a href="/privacidad/">Más información</a>
+  </p>
+  <div class="consent-actions">
+    <button class="pill" type="button" data-consent="granted">Aceptar</button>
+    <button class="pill" type="button" data-consent="denied">Rechazar</button>
+  </div>
+</div>
