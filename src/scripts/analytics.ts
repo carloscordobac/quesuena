@@ -24,6 +24,8 @@ function setDisabled(value: boolean): void {
 }
 
 export function loadAnalytics(): void {
+  // Comprobación literal: sin PUBLIC_GA_ID el compilador elimina todo lo que sigue y el bundle no menciona a Google.
+  if (!import.meta.env.PUBLIC_GA_ID) return;
   if (!allowedHere()) return;
   setDisabled(false);
   if (loaded) return;
