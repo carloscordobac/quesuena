@@ -67,6 +67,12 @@ const ogImage = new URL('/og.png', Astro.site);
       <a href="/privacidad/">Privacidad</a>
       {ANALYTICS_ENABLED && <button type="button" class="foot-link" data-consent-open hidden>Cookies</button>}
       <a href="https://ccordoba.es" rel="noopener">Un experimento de ccordoba.es</a>
+      <div class="foot-brand">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="/img/desarrollo-creativo-oscuro.png" />
+          <img src="/img/desarrollo-creativo-claro.png" alt="Desarrollo Creativo" width="800" height="269" loading="lazy" decoding="async" />
+        </picture>
+      </div>
     </footer>
     {ANALYTICS_ENABLED && <script>import '../scripts/consent.ts';</script>}
   </body>

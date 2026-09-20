@@ -126,6 +126,17 @@ a {
   align-items: center;
   min-height: 44px;
 }
+.foot-brand {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+.foot-brand img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
 
 /* ---------- App ---------- */
 main#app {
