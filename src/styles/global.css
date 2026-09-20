@@ -532,9 +532,6 @@ summary::-webkit-details-marker {
   font-size: 0.95rem;
 }
 .consent-text a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
   margin-left: 6px;
   font-weight: 600;
 }
