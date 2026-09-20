@@ -1,0 +1,15 @@
+{
+  "name": "Nutria",
+  "emoji": "🦦",
+  "file": "animales/mar/nutria.mp3",
+  "duration": 8.05,
+  "gain": 2.3,
+  "origin": "grabacion",
+  "species": "Nutria lisa",
+  "credit": {
+    "title": "Smooth-coated otter sound.wav",
+    "author": "Ganesh Mohan T",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Smooth-coated_otter_sound.wav"
+  }
+}

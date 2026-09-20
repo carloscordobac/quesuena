@@ -1,0 +1,15 @@
+{
+  "name": "Pingüino",
+  "emoji": "🐧",
+  "file": "animales/aves/pinguino.mp3",
+  "duration": 0.86,
+  "gain": -1.4,
+  "origin": "grabacion",
+  "species": "Pingüino africano",
+  "credit": {
+    "title": "Vocal individuality cues in the African penguin (Spheniscus demersus) (srep17255-s2).oga",
+    "author": "Favaro L, Gamba M, Alfieri C, Pessani D, McElligott A",
+    "license": "CC-BY-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Vocal-individuality-cues-in-the-African-penguin-(Spheniscus-demersus)-a-source-filter-theory-srep17255-s2.oga"
+  }
+}

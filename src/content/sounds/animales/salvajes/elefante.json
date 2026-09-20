@@ -1,0 +1,14 @@
+{
+  "name": "Elefante",
+  "emoji": "🐘",
+  "file": "animales/salvajes/elefante.mp3",
+  "duration": 1.38,
+  "gain": 6.4,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Elephant voice - trumpeting.ogg",
+    "author": "தகவலுழவன்",
+    "license": "CC0-1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Elephant_voice_-_trumpeting.ogg"
+  }
+}

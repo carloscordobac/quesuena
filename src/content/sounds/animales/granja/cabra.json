@@ -1,0 +1,15 @@
+{
+  "name": "Cabra",
+  "emoji": "🐐",
+  "file": "animales/granja/cabra.mp3",
+  "duration": 8.05,
+  "gain": -1.0,
+  "origin": "grabacion",
+  "species": "Rebaño de cabras",
+  "credit": {
+    "title": "Herd of goats bleating.ogg",
+    "author": "stephan",
+    "license": "PD",
+    "url": "https://commons.wikimedia.org/wiki/File:Herd_of_goats_bleating.ogg"
+  }
+}

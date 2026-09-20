@@ -1,0 +1,14 @@
+{
+  "name": "Lobo",
+  "emoji": "🐺",
+  "file": "animales/salvajes/lobo.mp3",
+  "duration": 8.05,
+  "gain": -2.5,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Wolf howls.ogg",
+    "author": "US Fish & Wildlife Service",
+    "license": "PD",
+    "url": "https://commons.wikimedia.org/wiki/File:Wolf_howls.ogg"
+  }
+}

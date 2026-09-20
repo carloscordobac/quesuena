@@ -1,0 +1,14 @@
+{
+  "name": "Oso",
+  "emoji": "🐻",
+  "file": "animales/salvajes/oso.mp3",
+  "duration": 8.05,
+  "gain": 2.8,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Bear growl.ogg",
+    "author": "Shizhao",
+    "license": "CC-BY-3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Bear_growl.ogg"
+  }
+}

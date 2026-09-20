@@ -1,0 +1,15 @@
+{
+  "name": "Gato",
+  "emoji": "🐱",
+  "file": "animales/granja/gato.mp3",
+  "duration": 1.28,
+  "gain": -2.1,
+  "origin": "grabacion",
+  "species": "Gato siamés",
+  "credit": {
+    "title": "Meow of a Siamese cat - freemaster2.wav",
+    "author": "freemaster2",
+    "license": "CC0-1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Meow_of_a_Siamese_cat_-_freemaster2.wav"
+  }
+}

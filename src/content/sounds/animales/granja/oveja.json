@@ -1,0 +1,14 @@
+{
+  "name": "Oveja",
+  "emoji": "🐑",
+  "file": "animales/granja/oveja.mp3",
+  "duration": 8.05,
+  "gain": -1.0,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Sheep bleating.ogg",
+    "author": "earthcalling",
+    "license": "PD",
+    "url": "https://commons.wikimedia.org/wiki/File:Sheep_bleating.ogg"
+  }
+}

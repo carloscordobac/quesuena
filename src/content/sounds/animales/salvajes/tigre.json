@@ -1,0 +1,14 @@
+{
+  "name": "Tigre",
+  "emoji": "🐯",
+  "file": "animales/salvajes/tigre.mp3",
+  "duration": 8.05,
+  "gain": 2.4,
+  "origin": "grabacion",
+  "credit": {
+    "title": "439280 schots angry-tiger.wav",
+    "author": "schots",
+    "license": "CC0-1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:439280_schots_angry-tiger.wav"
+  }
+}

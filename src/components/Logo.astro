@@ -1,0 +1,20 @@
+---
+/** Símbolo de ¿Qué suena?: cinco arcos (uno por categoría) y un punto central. */
+interface Props {
+  size?: number;
+  dot?: string;
+}
+const { size = 32, dot = 'currentColor' } = Astro.props;
+const colors = ['#F2A93B', '#E8553D', '#5A5BD9', '#1FA6D6', '#45B36B'];
+const arc = (a0: number, a1: number, r = 38) => {
+  const p = (a: number) => [50 + r * Math.sin((a * Math.PI) / 180), 50 - r * Math.cos((a * Math.PI) / 180)];
+  const [x0, y0] = p(a0);
+  const [x1, y1] = p(a1);
+  return `M${x0.toFixed(2)} ${y0.toFixed(2)}A${r} ${r} 0 0 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`;
+};
+const arcs = colors.map((color, i) => ({ color, d: arc(10 + i * 72, 62 + i * 72) }));
+---
+<svg width={size} height={size} viewBox="3 3 94 94" aria-hidden="true" focusable="false">
+  {arcs.map((a) => <path d={a.d} fill="none" stroke={a.color} stroke-width="10" stroke-linecap="round" />)}
+  <circle cx="50" cy="50" r="14" fill={dot} />
+</svg>

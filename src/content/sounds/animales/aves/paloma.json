@@ -1,0 +1,15 @@
+{
+  "name": "Paloma",
+  "emoji": "🕊️",
+  "file": "animales/aves/paloma.mp3",
+  "duration": 4.86,
+  "gain": 0.3,
+  "origin": "grabacion",
+  "species": "Tórtola turca",
+  "credit": {
+    "title": "Chant Tourterelle Turque domestiquée (Siffli).wav",
+    "author": "Opsylac",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Chant_Tourterelle_Turque_domestiqu%C3%A9e_(Siffli).wav"
+  }
+}

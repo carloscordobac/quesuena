@@ -1,0 +1,14 @@
+{
+  "name": "Hipopótamo",
+  "emoji": "🦛",
+  "file": "animales/salvajes/hipopotamo.mp3",
+  "duration": 8.05,
+  "gain": -1.7,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Hippos (Pixabay)",
+    "author": "freesound_community (grabación de «toadie»)",
+    "license": "PIXABAY",
+    "url": "https://pixabay.com/sound-effects/hippos-33576/"
+  }
+}

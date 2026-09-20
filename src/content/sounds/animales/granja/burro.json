@@ -1,0 +1,14 @@
+{
+  "name": "Burro",
+  "emoji": "🫏",
+  "file": "animales/granja/burro.mp3",
+  "duration": 8.05,
+  "gain": -0.5,
+  "origin": "grabacion",
+  "credit": {
+    "title": "157763 felix-blume a-donkey-is-braying-in-his-enclosure-in-south-of-france.wav",
+    "author": "felix-blume",
+    "license": "CC0-1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:157763_felix-blume_a-donkey-is-braying-in-his-enclosure-in-south-of-france.wav"
+  }
+}

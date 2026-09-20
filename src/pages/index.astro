@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCatalog } from '../lib/catalog';
+
+const catalog = await getCatalog();
+// Solo lo mínimo para pintar los filtros; los sonidos se piden después (/data/<coleccion>.json).
+const collections = catalog.map((c) => ({ id: c.id, name: c.name, emoji: c.emoji, count: c.sounds.length }));
+const audioBase: string = import.meta.env.PUBLIC_AUDIO_BASE ?? '/audio/';
+---
+<Base path="/">
+  <main id="app" data-audio-base={audioBase}>
+    <div class="chips" id="filters" role="group" aria-label="Colección" hidden></div>
+
+    <section class="stage-block">
+      <div class="stage" id="stage">
+        <canvas id="ring" aria-hidden="true"></canvas>
+        <button class="disc" id="play" type="button" aria-label="Reproducir el sonido de algo al azar">
+          <span class="face" id="face"></span>
+        </button>
+      </div>
+
+      <div class="reveal" aria-live="polite">
+        <p class="hint" id="hint">Toca el círculo para oír algo al azar.</p>
+        <p class="word" id="word" hidden></p>
+        <p class="name" id="name" hidden></p>
+      </div>
+    </section>
+
+    <div class="controls">
+      <button class="pill" id="replay" type="button" disabled>Repetir</button>
+      <button class="pill" id="reveal" type="button" hidden>Revelar</button>
+      <button class="switch" id="guess" type="button" role="switch" aria-checked="false">
+        <span class="track"><span class="knob"></span></span>
+        <span>Adivinar antes de ver</span>
+      </button>
+    </div>
+
+    <section class="more">
+      <details>
+        <summary id="count">Colección</summary>
+        <div id="grid" class="groups"></div>
+      </details>
+    </section>
+  </main>
+
+  <script type="application/json" id="collections-data" set:html={JSON.stringify(collections)} />
+  <noscript><p class="noscript">¿Qué suena? necesita JavaScript para reproducir los sonidos.</p></noscript>
+  <script>
+    import '../scripts/app.ts';
+  </script>
+</Base>

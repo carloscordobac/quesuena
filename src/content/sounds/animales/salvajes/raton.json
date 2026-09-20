@@ -1,0 +1,14 @@
+{
+  "name": "Ratón",
+  "emoji": "🐭",
+  "file": "animales/salvajes/raton.mp3",
+  "duration": 4.52,
+  "gain": 3.2,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Mouse voice.flac",
+    "author": "Yosef Ben Melamed",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Mouse_voice.flac"
+  }
+}

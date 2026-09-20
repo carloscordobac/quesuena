@@ -1,0 +1,14 @@
+{
+  "name": "Vaca",
+  "emoji": "🐮",
+  "file": "animales/granja/vaca.mp3",
+  "duration": 2.25,
+  "gain": -1.5,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Mudchute cow 1.ogg",
+    "author": "Secretlondon",
+    "license": "CC-BY-SA-3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Mudchute_cow_1.ogg"
+  }
+}

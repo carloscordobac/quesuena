@@ -1,0 +1,15 @@
+{
+  "name": "Ardilla",
+  "emoji": "🐿️",
+  "file": "animales/salvajes/ardilla.mp3",
+  "duration": 8.05,
+  "gain": -1.0,
+  "origin": "grabacion",
+  "species": "Ardilla de Douglas",
+  "credit": {
+    "title": "Tamiasciurus douglasii.ogg",
+    "author": "Parande",
+    "license": "CC-BY-SA-3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Tamiasciurus_douglasii.ogg"
+  }
+}

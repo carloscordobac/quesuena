@@ -1,0 +1,15 @@
+{
+  "name": "Guacamayo",
+  "emoji": "🦜",
+  "file": "animales/aves/guacamayo.mp3",
+  "duration": 8.05,
+  "gain": 2.5,
+  "origin": "grabacion",
+  "species": "Guacamayo escarlata",
+  "credit": {
+    "title": "Scarlet macaw 01.wav",
+    "author": "Ganesh Mohan T",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Scarlet_macaw_01.wav"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Águila",
+  "emoji": "🦅",
+  "file": "animales/aves/aguila.mp3",
+  "duration": 8.05,
+  "gain": 0.9,
+  "origin": "grabacion",
+  "species": "Águila real",
+  "credit": {
+    "title": "Golden Eagle (Aquila chrysaetos) (W1CDR0001387 BD6).ogg",
+    "author": "British Library",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Golden_Eagle_(Aquila_chrysaetos)_(W1CDR0001387_BD6).ogg"
+  }
+}

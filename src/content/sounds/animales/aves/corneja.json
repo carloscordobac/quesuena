@@ -1,0 +1,15 @@
+{
+  "name": "Corneja",
+  "emoji": "🐦‍⬛",
+  "file": "animales/aves/corneja.mp3",
+  "duration": 5.33,
+  "gain": 0.4,
+  "origin": "grabacion",
+  "species": "Corneja negra",
+  "credit": {
+    "title": "Corvus corone - Carrion Crow XC507919.mp3",
+    "author": "Marie-Lan Taÿ Pamart (xeno-canto)",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Corvus_corone_-_Carrion_Crow_XC507919.mp3"
+  }
+}

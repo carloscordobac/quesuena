@@ -1,0 +1,15 @@
+{
+  "name": "Conejo",
+  "emoji": "🐰",
+  "file": "animales/granja/conejo.mp3",
+  "duration": 8.05,
+  "gain": 1.4,
+  "origin": "grabacion",
+  "species": "Conejo doméstico",
+  "credit": {
+    "title": "Sounds of a rollicking House Rabbit.flac",
+    "author": "Fiver, der Hellseher",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Sounds_of_a_rollicking_House_Rabbit.flac"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Rana",
+  "emoji": "🐸",
+  "file": "animales/salvajes/rana.mp3",
+  "duration": 4.34,
+  "gain": -1.0,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Single Frog Croak.oga",
+    "author": "MichaeltheFox8621",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Single_Frog_Croak.oga"
+  }
+}

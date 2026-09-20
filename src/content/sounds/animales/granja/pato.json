@@ -1,0 +1,14 @@
+{
+  "name": "Pato",
+  "emoji": "🦆",
+  "file": "animales/granja/pato.mp3",
+  "duration": 7.21,
+  "gain": -1.4,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Sound Effect (Pixabay)",
+    "author": "Ribhav Agrawal",
+    "license": "PIXABAY",
+    "url": "https://pixabay.com/users/ribhavagrawal-39286533/"
+  }
+}

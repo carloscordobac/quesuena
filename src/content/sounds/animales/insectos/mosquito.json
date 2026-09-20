@@ -1,0 +1,14 @@
+{
+  "name": "Mosquito",
+  "emoji": "🦟",
+  "file": "animales/insectos/mosquito.mp3",
+  "duration": 8.05,
+  "gain": -3.9,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Komar.flac",
+    "author": "Muczek123",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Komar.flac"
+  }
+}

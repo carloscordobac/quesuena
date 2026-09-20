@@ -1,0 +1,15 @@
+{
+  "name": "Grillo",
+  "emoji": "🦗",
+  "file": "animales/insectos/grillo.mp3",
+  "duration": 8.05,
+  "gain": 0.9,
+  "origin": "grabacion",
+  "species": "Grillo de campo",
+  "credit": {
+    "title": "Field cricket Gryllus pennsylvanicus.ogg",
+    "author": "Thatcher",
+    "license": "CC-BY-SA-3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Field_cricket_Gryllus_pennsylvanicus.ogg"
+  }
+}

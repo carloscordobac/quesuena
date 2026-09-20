@@ -1,0 +1,14 @@
+{
+  "name": "León",
+  "emoji": "🦁",
+  "file": "animales/salvajes/leon.mp3",
+  "duration": 7.99,
+  "gain": -2.5,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Lion raring-sound1TamilNadu178.ogg",
+    "author": "தகவலுழவன்",
+    "license": "PD",
+    "url": "https://commons.wikimedia.org/wiki/File:Lion_raring-sound1TamilNadu178.ogg"
+  }
+}

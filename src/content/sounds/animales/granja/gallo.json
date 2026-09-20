@@ -1,0 +1,14 @@
+{
+  "name": "Gallo",
+  "emoji": "🐓",
+  "file": "animales/granja/gallo.mp3",
+  "duration": 1.88,
+  "gain": 0.1,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Rooster crowing.ogg",
+    "author": "Filo gèn'",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Rooster_crowing.ogg"
+  }
+}

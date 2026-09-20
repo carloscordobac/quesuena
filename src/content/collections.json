@@ -1,0 +1,33 @@
+[
+  {
+    "id": "animales",
+    "name": "Animales",
+    "emoji": "🐾",
+    "categories": [
+      { "id": "granja", "name": "Granja", "hue": 37 },
+      { "id": "salvajes", "name": "Salvajes", "hue": 9 },
+      { "id": "aves", "name": "Aves", "hue": 239 },
+      { "id": "mar", "name": "Mar", "hue": 197 },
+      { "id": "insectos", "name": "Insectos", "hue": 141 }
+    ]
+  },
+  {
+    "id": "dinosaurios",
+    "name": "Dinosaurios",
+    "emoji": "🦖",
+    "categories": [
+      { "id": "herbivoros", "name": "Herbívoros", "hue": 95 },
+      { "id": "carnivoros", "name": "Carnívoros", "hue": 20 }
+    ]
+  },
+  {
+    "id": "objetos",
+    "name": "Objetos",
+    "emoji": "🔔",
+    "categories": [
+      { "id": "hogar", "name": "Hogar", "hue": 280 },
+      { "id": "transporte", "name": "Transporte", "hue": 215 },
+      { "id": "instrumentos", "name": "Instrumentos", "hue": 330 }
+    ]
+  }
+]

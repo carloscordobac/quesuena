@@ -1,0 +1,15 @@
+{
+  "name": "Mono",
+  "emoji": "🐒",
+  "file": "animales/salvajes/mono.mp3",
+  "duration": 8.05,
+  "gain": 7.7,
+  "origin": "grabacion",
+  "species": "Mono lanudo marrón",
+  "credit": {
+    "title": "Brown woolly monkey alarm call.wav",
+    "author": "Kai Medina (Mk170101)",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Brown_woolly_monkey_alarm_call.wav"
+  }
+}

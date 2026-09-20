@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.DS_Store
+# Originales sin procesar del script de ingesta (pueden pesar mucho)
+raw/*
+!raw/.gitkeep
+!raw/README.md

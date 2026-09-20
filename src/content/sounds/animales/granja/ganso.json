@@ -1,0 +1,15 @@
+{
+  "name": "Ganso",
+  "emoji": "🪿",
+  "file": "animales/granja/ganso.mp3",
+  "duration": 8.05,
+  "gain": 3.5,
+  "origin": "grabacion",
+  "species": "Ánsar común",
+  "credit": {
+    "title": "Anser anser - Greylag Goose XC436358.mp3",
+    "author": "Joost van Bruggen (xeno-canto)",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Anser_anser_-_Greylag_Goose_XC436358.mp3"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Perro",
+  "emoji": "🐶",
+  "file": "animales/granja/perro.mp3",
+  "duration": 2.56,
+  "gain": -0.7,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Barking of a dog.ogg",
+    "author": "Amada44",
+    "license": "CC-BY-SA-3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Barking_of_a_dog.ogg"
+  }
+}

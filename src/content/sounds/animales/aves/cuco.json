@@ -1,0 +1,15 @@
+{
+  "name": "Cuco",
+  "emoji": "🐦",
+  "file": "animales/aves/cuco.mp3",
+  "duration": 8.05,
+  "gain": -0.8,
+  "origin": "grabacion",
+  "species": "Cuco común",
+  "credit": {
+    "title": "Common Cuckoo (Gjøk) (Cuculus canorus) - Sortland, Norway 2023-07-14.mp3",
+    "author": "Ryan Hodnett",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Common_Cuckoo_(Gj%C3%B8k)_(Cuculus_canorus)_-_Sortland,_Norway_2023-07-14.mp3"
+  }
+}

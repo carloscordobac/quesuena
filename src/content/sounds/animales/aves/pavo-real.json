@@ -1,0 +1,14 @@
+{
+  "name": "Pavo real",
+  "emoji": "🦚",
+  "file": "animales/aves/pavo-real.mp3",
+  "duration": 7.89,
+  "gain": 1.5,
+  "origin": "grabacion",
+  "credit": {
+    "title": "MalePeacockCall.ogg",
+    "author": "Perlscrypt",
+    "license": "CC-BY-SA-3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:MalePeacockCall.ogg"
+  }
+}

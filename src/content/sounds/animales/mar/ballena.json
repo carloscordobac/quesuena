@@ -1,0 +1,15 @@
+{
+  "name": "Ballena",
+  "emoji": "🐋",
+  "file": "animales/mar/ballena.mp3",
+  "duration": 8.05,
+  "gain": 0.3,
+  "origin": "grabacion",
+  "species": "Ballena jorobada",
+  "credit": {
+    "title": "Humpback Whale Song and Foraging Behavior on an Antarctic Feeding Ground (pone.0051214.s001).oga",
+    "author": "Stimpert A, Peavey L, Friedlaender A, Nowacek D",
+    "license": "CC-BY-2.5",
+    "url": "https://commons.wikimedia.org/wiki/File:Humpback-Whale-Song-and-Foraging-Behavior-on-an-Antarctic-Feeding-Ground-pone.0051214.s001.oga"
+  }
+}

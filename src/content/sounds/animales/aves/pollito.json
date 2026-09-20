@@ -1,0 +1,15 @@
+{
+  "name": "Pollito",
+  "emoji": "🐥",
+  "file": "animales/aves/pollito.mp3",
+  "duration": 8.05,
+  "gain": 3.9,
+  "origin": "grabacion",
+  "species": "Grupo de pollitos",
+  "credit": {
+    "title": "মুরগির বাচ্চার ডাক.oga",
+    "author": "Md. Tahmid Hossain",
+    "license": "CC0-1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:%E0%A6%AE%E0%A7%81%E0%A6%B0%E0%A6%97%E0%A6%BF%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A7%8D%E0%A6%9A%E0%A6%BE%E0%A6%B0_%E0%A6%A1%E0%A6%BE%E0%A6%95.oga"
+  }
+}

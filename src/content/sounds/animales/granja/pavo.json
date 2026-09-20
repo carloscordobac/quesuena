@@ -1,0 +1,14 @@
+{
+  "name": "Pavo",
+  "emoji": "🦃",
+  "file": "animales/granja/pavo.mp3",
+  "duration": 8.05,
+  "gain": -0.5,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Gobbler.ogg",
+    "author": "bod",
+    "license": "PD",
+    "url": "https://commons.wikimedia.org/wiki/File:Gobbler.ogg"
+  }
+}

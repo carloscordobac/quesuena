@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCatalog } from '../lib/catalog';
+import licenses from '../lib/licenses.json';
+
+const catalog = await getCatalog();
+const originLabel = { grabacion: '', recreacion: 'Recreación', sintetico: 'Sonido sintético' } as const;
+---
+<Base
+  title="Créditos de los sonidos · ¿Qué suena?"
+  description="Autores, licencias y enlaces de todas las grabaciones que suenan en ¿Qué suena?"
+  path="/creditos/"
+>
+  <main class="page">
+    <h1 class="page-title">Créditos de los sonidos</h1>
+    <p class="page-lead">
+      Los sonidos son grabaciones de otras personas, publicadas con licencias abiertas en Wikimedia Commons, archive.org y Pixabay.
+      Están recortados y con el volumen igualado. Cada uno conserva su licencia original: las CC BY-SA exigen mantener esta
+      atribución y compartir las adaptaciones con la misma licencia.
+    </p>
+
+    {catalog.map((c) => (
+      <section class="credit-section">
+        <h2>{c.name}</h2>
+        {c.categories
+          .filter((k) => c.sounds.some((s) => s.category === k.id))
+          .map((k) => (
+            <>
+              <h3>{k.name}</h3>
+              <ul class="credit-list">
+                {c.sounds
+                  .filter((s) => s.category === k.id)
+                  .map((s) => (
+                    <li>
+                      <b>{s.name}</b>
+                      {s.species && <span class="credit-species"> ({s.species})</span>}
+                      {originLabel[s.origin] && <span class="credit-badge">{originLabel[s.origin]}</span>}
+                      <br />
+                      <a href={s.credit.url} rel="noopener">{s.credit.title}</a>, {s.credit.author}.{' '}
+                      <a href={licenses[s.credit.license].url} rel="noopener">{licenses[s.credit.license].label}</a>.
+                    </li>
+                  ))}
+              </ul>
+            </>
+          ))}
+      </section>
+    ))}
+  </main>
+</Base>

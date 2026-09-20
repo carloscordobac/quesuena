@@ -1,0 +1,15 @@
+{
+  "name": "Mosca",
+  "emoji": "🪰",
+  "file": "animales/insectos/mosca.mp3",
+  "duration": 8.05,
+  "gain": -5.4,
+  "origin": "grabacion",
+  "species": "Mosca doméstica",
+  "credit": {
+    "title": "Zumbido de mosca doméstica.ogg",
+    "author": "Luisalvaz",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Zumbido_de_mosca_dom%C3%A9stica.ogg"
+  }
+}

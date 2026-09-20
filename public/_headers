@@ -1,0 +1,17 @@
+# Cabeceras de Cloudflare Pages (https://developers.cloudflare.com/pages/configuration/headers/)
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+# Ficheros con hash en el nombre: se pueden cachear para siempre.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Audio: si sustituyes un mp3 conservando el nombre, tardará hasta una semana en verse en los navegadores.
+/audio/*
+  Cache-Control: public, max-age=604800
+
+# Catálogo de sonidos por colección.
+/data/*
+  Cache-Control: public, max-age=300

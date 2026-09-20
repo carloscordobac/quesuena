@@ -1,0 +1,14 @@
+{
+  "name": "Abeja",
+  "emoji": "🐝",
+  "file": "animales/insectos/abeja.mp3",
+  "duration": 8.05,
+  "gain": 3.4,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Bee buzzing sound (animal noises).opus",
+    "author": "Spanac (Free Sounds Library)",
+    "license": "CC-BY-3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Bee_buzzing_sound_(animal_noises).opus"
+  }
+}

@@ -1,0 +1,67 @@
+---
+import '@fontsource-variable/dynapuff/wdth.css';
+import '@fontsource-variable/figtree/wght.css';
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Ruta canónica, p. ej. «/» o «/creditos/». */
+  path?: string;
+}
+
+const {
+  title = '¿Qué suena? Un sonido al azar, ¿sabes qué es?',
+  description = 'Toca el círculo y escucha un sonido real al azar: animales y más colecciones. ¿Sabes qué es?',
+  path = '/',
+} = Astro.props;
+
+const canonical = new URL(path, Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta name="theme-color" content="#F7F8FB" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131A2B" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="¿Qué suena?" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="¿qué suena? Un sonido al azar. ¿Sabes qué es?" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body>
+    <header class="top">
+      <a class="brand" href="/" aria-label="¿Qué suena? Ir al inicio">
+        <Logo size={34} dot="var(--ink)" />
+        <span class="brand-word">¿qué suena?</span>
+      </a>
+    </header>
+    <slot />
+    <footer class="foot">
+      <a href="/creditos/">Créditos de los sonidos</a>
+      <a href="https://ccordoba.es" rel="noopener">Un experimento de ccordoba.es</a>
+    </footer>
+  </body>
+</html>

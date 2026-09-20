@@ -1,0 +1,15 @@
+{
+  "name": "Cerdo",
+  "emoji": "🐷",
+  "file": "animales/granja/cerdo.mp3",
+  "duration": 1.46,
+  "gain": -0.4,
+  "origin": "grabacion",
+  "species": "Cochinillo",
+  "credit": {
+    "title": "618483 foleyhaven piglet-squeal-01.flac",
+    "author": "Foleyhaven",
+    "license": "CC0-1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:618483_foleyhaven_piglet-squeal-01.flac"
+  }
+}

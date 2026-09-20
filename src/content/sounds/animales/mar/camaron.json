@@ -1,0 +1,15 @@
+{
+  "name": "Camarón",
+  "emoji": "🦐",
+  "file": "animales/mar/camaron.mp3",
+  "duration": 8.05,
+  "gain": -0.1,
+  "origin": "grabacion",
+  "species": "Camarón pistola",
+  "credit": {
+    "title": "hydrophonesnappingshrimp03.mp3",
+    "author": "John Grzinich (Radio Aporee)",
+    "license": "PD",
+    "url": "https://archive.org/details/aporee_20758_24088"
+  }
+}

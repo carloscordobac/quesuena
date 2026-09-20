@@ -1,0 +1,14 @@
+{
+  "name": "Delfín",
+  "emoji": "🐬",
+  "file": "animales/mar/delfin.mp3",
+  "duration": 8.05,
+  "gain": 0.9,
+  "origin": "grabacion",
+  "credit": {
+    "title": "161691 felixblume dolphin-screaming-underwater-in-caribbean-sea-mexico.wav",
+    "author": "felix.blume",
+    "license": "CC0-1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:161691_felixblume_dolphin-screaming-underwater-in-caribbean-sea-mexico.wav"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Ruiseñor",
+  "emoji": "🐦",
+  "file": "animales/aves/ruisenor.mp3",
+  "duration": 8.05,
+  "gain": -7.8,
+  "origin": "grabacion",
+  "species": "Canto del ruiseñor común",
+  "credit": {
+    "title": "Nightingale (Luscinia megarhynchos).ogg",
+    "author": "Helical gear",
+    "license": "CC-BY-SA-3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Nightingale_(Luscinia_megarhynchos).ogg"
+  }
+}

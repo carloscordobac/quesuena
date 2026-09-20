@@ -1,0 +1,15 @@
+{
+  "name": "Cucaracha",
+  "emoji": "🪳",
+  "file": "animales/insectos/cucaracha.mp3",
+  "duration": 5.12,
+  "gain": 2.1,
+  "origin": "grabacion",
+  "species": "Cucaracha de Madagascar",
+  "credit": {
+    "title": "Tarakan.ogg",
+    "author": "Grinkod",
+    "license": "CC-BY-SA-3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Tarakan.ogg"
+  }
+}

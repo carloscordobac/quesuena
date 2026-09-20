@@ -1,0 +1,14 @@
+{
+  "name": "Orca",
+  "emoji": "🐳",
+  "file": "animales/mar/orca.mp3",
+  "duration": 8.05,
+  "gain": -0.1,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Killer whale residents broadband.ogg",
+    "author": "Autor no acreditado en Commons",
+    "license": "PD",
+    "url": "https://commons.wikimedia.org/wiki/File:Killer_whale_residents_broadband.ogg"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Serpiente",
+  "emoji": "🐍",
+  "file": "animales/salvajes/serpiente.mp3",
+  "duration": 8.05,
+  "gain": 1.5,
+  "origin": "grabacion",
+  "species": "Serpiente de cascabel",
+  "credit": {
+    "title": "Rattlesnake.ogg",
+    "author": "US Fish & Wildlife Service",
+    "license": "PD",
+    "url": "https://commons.wikimedia.org/wiki/File:Rattlesnake.ogg"
+  }
+}

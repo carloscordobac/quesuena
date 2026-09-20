@@ -1,0 +1,15 @@
+{
+  "name": "Flamenco",
+  "emoji": "🦩",
+  "file": "animales/aves/flamenco.mp3",
+  "duration": 8.05,
+  "gain": -0.2,
+  "origin": "grabacion",
+  "species": "Flamenco común",
+  "credit": {
+    "title": "Greater flamingo call recorded in March 2005 at Mayani, Satara.wav",
+    "author": "Sharadapte",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Greater_flamingo_call_recorded_in_March_2005_at_Mayani,_Satara.wav"
+  }
+}

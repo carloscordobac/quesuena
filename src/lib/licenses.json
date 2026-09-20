@@ -1,0 +1,11 @@
+{
+  "CC0-1.0": { "label": "CC0 1.0", "url": "https://creativecommons.org/publicdomain/zero/1.0/" },
+  "PD": { "label": "Dominio público", "url": "https://creativecommons.org/publicdomain/mark/1.0/" },
+  "CC-BY-2.5": { "label": "CC BY 2.5", "url": "https://creativecommons.org/licenses/by/2.5/" },
+  "CC-BY-3.0": { "label": "CC BY 3.0", "url": "https://creativecommons.org/licenses/by/3.0/" },
+  "CC-BY-4.0": { "label": "CC BY 4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+  "CC-BY-SA-2.5": { "label": "CC BY-SA 2.5", "url": "https://creativecommons.org/licenses/by-sa/2.5/" },
+  "CC-BY-SA-3.0": { "label": "CC BY-SA 3.0", "url": "https://creativecommons.org/licenses/by-sa/3.0/" },
+  "CC-BY-SA-4.0": { "label": "CC BY-SA 4.0", "url": "https://creativecommons.org/licenses/by-sa/4.0/" },
+  "PIXABAY": { "label": "Licencia de contenido de Pixabay", "url": "https://pixabay.com/service/license-summary/" }
+}

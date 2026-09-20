@@ -1,0 +1,14 @@
+{
+  "name": "Caballo",
+  "emoji": "🐴",
+  "file": "animales/granja/caballo.mp3",
+  "duration": 2.3,
+  "gain": 12.0,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Wiehern.ogg",
+    "author": "Hü.",
+    "license": "PD",
+    "url": "https://commons.wikimedia.org/wiki/File:Wiehern.ogg"
+  }
+}

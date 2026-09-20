@@ -1,0 +1,15 @@
+{
+  "name": "Gallina",
+  "emoji": "🐔",
+  "file": "animales/granja/gallina.mp3",
+  "duration": 8.05,
+  "gain": -2.2,
+  "origin": "grabacion",
+  "species": "Gallina anunciando un huevo",
+  "credit": {
+    "title": "Hen announcing shes lain an egg.ogg",
+    "author": "alys",
+    "license": "PD",
+    "url": "https://commons.wikimedia.org/wiki/File:Hen_announcing_shes_lain_an_egg.ogg"
+  }
+}

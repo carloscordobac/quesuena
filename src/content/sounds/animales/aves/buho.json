@@ -1,0 +1,15 @@
+{
+  "name": "Búho",
+  "emoji": "🦉",
+  "file": "animales/aves/buho.mp3",
+  "duration": 7.84,
+  "gain": -1.0,
+  "origin": "grabacion",
+  "species": "Cárabo común",
+  "credit": {
+    "title": "Strix aluco - Tawny Owl XC500920.mp3",
+    "author": "Alvaro Ortiz Troncoso (xeno-canto)",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Strix_aluco_-_Tawny_Owl_XC500920.mp3"
+  }
+}

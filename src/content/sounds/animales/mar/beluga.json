@@ -1,0 +1,14 @@
+{
+  "name": "Beluga",
+  "emoji": "🐋",
+  "file": "animales/mar/beluga.mp3",
+  "duration": 8.05,
+  "gain": -2.1,
+  "origin": "grabacion",
+  "credit": {
+    "title": "Beluga vocalizations.ogg",
+    "author": "Fisheries Research Agency, Japón",
+    "license": "PD",
+    "url": "https://commons.wikimedia.org/wiki/File:Beluga_vocalizations.ogg"
+  }
+}
