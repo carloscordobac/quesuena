@@ -27,6 +27,7 @@ Astro (salida estática) + TypeScript + CSS propio (sin Tailwind, sin frameworks
 
 ## Privacidad y analítica
 - **Nada de scripts de terceros que carguen antes del consentimiento.** GA solo se carga desde `src/scripts/analytics.ts` tras un «Aceptar» explícito (`consent.ts`) y solo en los hostnames de `GA_HOSTS` (`src/lib/site.ts`). Nunca pegues un fragmento en el `<head>`.
+- **El ID de medición nunca se escribe en el repositorio.** Solo existe como variable `PUBLIC_GA_ID` (Cloudflare Pages, solo Production, tipo texto). Sin ella, la analítica queda desactivada: `ANALYTICS_ENABLED` de `src/lib/site.ts` oculta el aviso y el botón «Cookies». Cambiarla exige relanzar el despliegue (Astro la incrusta al compilar).
 - Sin señales de Google ni anuncios; los eventos no llevan datos personales ni identificadores propios (la web la puede usar gente menor de edad).
 - Si añades eventos, cookies o terceros, actualiza `/privacidad`.
 

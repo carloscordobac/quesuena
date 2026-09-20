@@ -28,6 +28,9 @@ Cloudflare → *Workers & Pages* → *Create* → *Pages* → *Connect to Git* �
 | Build command | `npm run build` |
 | Build output directory | `dist` |
 | Variable de entorno | `NODE_VERSION` = `22` |
+| Variable de entorno (solo Production, tipo texto) | `PUBLIC_GA_ID` = ID de medición de Google Analytics 4 (`G-…`). Sin ella no hay analítica |
+
+Después de crear o cambiar `PUBLIC_GA_ID` (*Settings → Variables and Secrets*), **relanza el despliegue** (*Deployments → Retry deployment* o un nuevo push): Astro la incrusta al compilar y no se lee en ejecución.
 
 Pulsa *Save and Deploy*. En un par de minutos tendrás una URL `quesuena.pages.dev` para comprobarlo.
 

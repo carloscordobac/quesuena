@@ -75,7 +75,9 @@ Repositorio en GitHub → proyecto en Cloudflare Pages → dominio `quesuena.es`
 Sin cuentas ni backend. El progreso vive solo en el `localStorage` del navegador. Con el permiso de quien visita («Aceptar» en el aviso de cookies) se usa Google Analytics 4, solo en quesuena.es, sin señales de Google ni anuncios. Se miden visitas y estos eventos: `play_sound`, `reveal_sound`, `replay_sound`, `filter_collection` y `toggle_guess`. Sin aceptar no hay ninguna petición a Google. Detalle para el público en [/privacidad](src/pages/privacidad.astro).
 
 - Dominios donde se carga: `GA_HOSTS` en `src/lib/site.ts`.
-- Desactivarla del todo (sin aviso ni botón «Cookies»): define `PUBLIC_GA_ID=` vacío en el entorno de build (`.env` o Cloudflare Pages).
+- El ID de medición se define **solo** con la variable `PUBLIC_GA_ID` (en Cloudflare Pages, solo Production, tipo texto). No está en el repositorio.
+- Sin la variable (o vacía) la analítica queda totalmente desactivada: sin aviso de cookies, sin botón «Cookies» y sin cargar nada de Google. Es lo que pasa en local.
+- Astro incrusta la variable al compilar: tras cambiarla hay que **relanzar el despliegue**.
 
 ## Marca
 
