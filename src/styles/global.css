@@ -156,6 +156,10 @@ a {
   width: auto;
   max-width: 100%;
 }
+/* Wordmark de ccordoba: más bajo para que sus letras igualen la altura de las del otro logotipo */
+.foot-logos a img {
+  height: 20px;
+}
 .foot-legal {
   display: flex;
   flex-wrap: wrap;
