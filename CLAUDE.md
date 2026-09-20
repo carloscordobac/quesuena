@@ -32,6 +32,7 @@ Astro (salida estática) + TypeScript + CSS propio (sin Tailwind, sin frameworks
 - Si añades eventos, cookies o terceros, actualiza `/privacidad`.
 
 ## Marca y estilo
+- El logotipo de Desarrollo Creativo del pie usa solo los ficheros de `public/img/` (versión clara para fondos claros, oscura para modo oscuro); no se recolorea ni se usa el PNG original.
 - Colores: Tinta `#131A2B`, Papel `#F7F8FB` y un tono por categoría (ámbar `#F2A93B`, bermellón `#E8553D`, índigo `#5A5BD9`, cian `#1FA6D6`, verde `#45B36B`). Los tonos por categoría se definen en `collections.json` (`hue`), no en el CSS.
 - Tipografía: DynaPuff 600 para títulos y el logotipo; Figtree para texto. Autoalojadas (Fontsource), sin Google Fonts.
 - Copy en español de España, tono cercano y breve, sentence case (no MAYÚSCULAS). Una acción se llama igual en todo el flujo.

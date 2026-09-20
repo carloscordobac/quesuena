@@ -2,6 +2,8 @@
 
 Identidad «C · Colores». Una marca que suena a juego: redondeada, de colores y sin solemnidad.
 
+> El logotipo de Desarrollo Creativo que aparece en el pie de la web es de otra marca y no forma parte de la identidad de ¿Qué suena?.
+
 ## Nombre
 
 - En texto: **¿Qué suena?** (con los dos signos, `quesuena.es` como dirección).
