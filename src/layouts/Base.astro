@@ -4,7 +4,7 @@ import '@fontsource-variable/figtree/wght.css';
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
 import ConsentBanner from '../components/ConsentBanner.astro';
-import { GA_ID } from '../lib/site';
+import { ANALYTICS_ENABLED } from '../lib/site';
 
 interface Props {
   title?: string;
@@ -54,7 +54,7 @@ const ogImage = new URL('/og.png', Astro.site);
     <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
-    {GA_ID && <ConsentBanner />}
+    {ANALYTICS_ENABLED && <ConsentBanner />}
     <header class="top">
       <a class="brand" href="/" aria-label="¿Qué suena? Ir al inicio">
         <Logo size={34} dot="var(--ink)" />
@@ -65,9 +65,9 @@ const ogImage = new URL('/og.png', Astro.site);
     <footer class="foot">
       <a href="/creditos/">Créditos de los sonidos</a>
       <a href="/privacidad/">Privacidad</a>
-      {GA_ID && <button type="button" class="foot-link" data-consent-open hidden>Cookies</button>}
+      {ANALYTICS_ENABLED && <button type="button" class="foot-link" data-consent-open hidden>Cookies</button>}
       <a href="https://ccordoba.es" rel="noopener">Un experimento de ccordoba.es</a>
     </footer>
-    {GA_ID && <script>import '../scripts/consent.ts';</script>}
+    {ANALYTICS_ENABLED && <script>import '../scripts/consent.ts';</script>}
   </body>
 </html>

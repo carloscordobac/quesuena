@@ -1,4 +1,4 @@
-import { GA_HOSTS, GA_ID } from '../lib/site';
+import { ANALYTICS_ENABLED, GA_HOSTS, GA_ID } from '../lib/site';
 
 /*
  * Google Analytics 4, solo con consentimiento previo (lo gestiona consent.ts).
@@ -14,14 +14,9 @@ declare global {
 
 let loaded = false;
 
-/** ¿Está configurada la analítica? (ID definido; no depende del dominio). */
-export function analyticsConfigured(): boolean {
-  return !!GA_ID;
-}
-
 /** ¿Se puede cargar aquí? Solo con ID y en los dominios de producción. */
 function allowedHere(): boolean {
-  return !!GA_ID && GA_HOSTS.includes(location.hostname);
+  return ANALYTICS_ENABLED && GA_HOSTS.includes(location.hostname);
 }
 
 function setDisabled(value: boolean): void {
@@ -63,7 +58,7 @@ export function loadAnalytics(): void {
 
 /** Retira el consentimiento: deja de enviar y borra las cookies de GA (mejor esfuerzo). */
 export function disableAnalytics(): void {
-  if (!GA_ID) return;
+  if (!ANALYTICS_ENABLED) return;
   setDisabled(true);
 
   // GA guarda las cookies en el dominio de nivel más alto posible (p. ej. .quesuena.es).
@@ -86,7 +81,7 @@ export function disableAnalytics(): void {
 
 /** Envía un evento si GA está cargado y activo; si no, no hace nada. */
 export function track(name: string, params: Record<string, string | number | boolean> = {}): void {
-  if (!loaded || !window.gtag) return;
+  if (!ANALYTICS_ENABLED || !loaded || !window.gtag) return;
   if ((window as unknown as Record<string, unknown>)['ga-disable-' + GA_ID]) return;
   try {
     window.gtag('event', name, params);

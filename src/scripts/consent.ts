@@ -1,4 +1,5 @@
-import { analyticsConfigured, disableAnalytics, loadAnalytics } from './analytics';
+import { ANALYTICS_ENABLED } from '../lib/site';
+import { disableAnalytics, loadAnalytics } from './analytics';
 
 /*
  * Consentimiento de analítica. La decisión vive solo en este navegador (localStorage)
@@ -32,8 +33,8 @@ function saveChoice(analytics: Choice): void {
 function init(): void {
   const banner = document.getElementById('consent');
   const reopen = document.querySelectorAll<HTMLButtonElement>('[data-consent-open]');
-  // Sin analítica configurada no hay nada que consentir: ni aviso ni botón «Cookies».
-  if (!banner || !analyticsConfigured()) return;
+  // Sin analítica (sin PUBLIC_GA_ID) no hay nada que consentir: ni aviso ni botón «Cookies».
+  if (!banner || !ANALYTICS_ENABLED) return;
   const root = document.documentElement;
   let opener: HTMLElement | null = null;
 

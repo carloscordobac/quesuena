@@ -2,8 +2,8 @@
 import Base from '../layouts/Base.astro';
 import { GA_ID } from '../lib/site';
 
-// Nombre de la cookie de sesión: _ga_ + ID de medición sin el «G-».
-const sessionCookie = `_ga_${GA_ID.replace(/^G-/, '')}`;
+// Nombre de la cookie de sesión: _ga_ + ID de medición sin el «G-». Sin ID (PUBLIC_GA_ID vacío) se muestra genérico.
+const sessionCookie = GA_ID ? `_ga_${GA_ID.replace(/^G-/, '')}` : '_ga_<identificador>';
 ---
 <Base
   title="Privacidad y cookies · ¿Qué suena?"
