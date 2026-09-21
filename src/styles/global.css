@@ -449,6 +449,11 @@ main#app {
   font-size: 0.9rem;
   color: var(--ink-2);
 }
+.crumbs li {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
 .crumbs li + li::before {
   content: '/';
   margin: 0 8px;
