@@ -26,6 +26,14 @@ const sounds = defineCollection({
     origin: z.enum(['grabacion', 'recreacion', 'sintetico']).default('grabacion'),
     /** Especie o detalle: «Serpiente de cascabel». Opcional. */
     species: z.string().optional(),
+    /** Artículo del nombre, para escribir «del gato», «de la vaca». Opcional. */
+    article: z.enum(['el', 'la', 'los', 'las']).optional(),
+    /** Cómo se llama el sonido («mugido»), su verbo («mugir») y su onomatopeya («muuu»). Opcionales: solo con datos verificados. */
+    sound: z.string().min(1).optional(),
+    verb: z.string().min(1).optional(),
+    onomatopoeia: z.string().min(1).optional(),
+    /** 1-2 frases con un dato útil y cierto sobre el sonido o cómo se comunica el animal. Opcional. */
+    description: z.string().min(1).max(280).optional(),
     /** Solo para casos especiales: fuerza el tono (0-359) en lugar del de la categoría. */
     hue: z.number().min(0).max(359).optional(),
     credit: z.object({

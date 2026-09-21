@@ -11,6 +11,9 @@
  *     "name": "Vaca",
  *     "emoji": "🐮",
  *     "species": "opcional",
+ *     "article": "el",                  // opcional: el | la | los | las («del gato», «de la vaca»)
+ *     "sound": "mugido", "verb": "mugir", "onomatopoeia": "muuu",   // opcionales, solo con datos verificados
+ *     "description": "1-2 frases ciertas (máx. 280 caracteres)",     // opcional
  *     "origin": "grabacion",            // grabacion | recreacion | sintetico (por defecto: grabacion)
  *     "credit": { "title": "…", "author": "…", "license": "CC-BY-SA-4.0", "url": "https://…" }
  *   }
@@ -82,6 +85,11 @@ function validateMeta(meta, where) {
   const c = meta.credit;
   if (!c || !c.title || !c.author || !c.url) errors.push('«credit» necesita title, author y url');
   else if (!licenses[c.license]) errors.push(`licencia «${c.license}» no permitida. Válidas: ${Object.keys(licenses).join(', ')}`);
+  if (meta.article && !['el', 'la', 'los', 'las'].includes(meta.article)) errors.push('«article» debe ser el, la, los o las');
+  for (const k of ['sound', 'verb', 'onomatopoeia', 'description']) {
+    if (meta[k] !== undefined && (typeof meta[k] !== 'string' || !meta[k].trim())) errors.push(`«${k}» debe ser un texto no vacío`);
+  }
+  if (meta.description && meta.description.length > 280) errors.push('«description» no puede pasar de 280 caracteres');
   if (meta.origin && !['grabacion', 'recreacion', 'sintetico'].includes(meta.origin)) errors.push('«origin» debe ser grabacion, recreacion o sintetico');
   if (errors.length) throw new Error(`${where}: ${errors.join('; ')}`);
 }
@@ -141,6 +149,7 @@ function ingestOne(file) {
       gain,
       origin: meta.origin ?? 'grabacion',
       ...(meta.species ? { species: meta.species } : {}),
+      ...Object.fromEntries(['article', 'sound', 'verb', 'onomatopoeia', 'description'].filter((k) => meta[k]).map((k) => [k, meta[k]])),
       ...(meta.hue !== undefined ? { hue: meta.hue } : {}),
       credit: meta.credit,
     };

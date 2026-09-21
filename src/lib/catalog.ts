@@ -21,6 +21,13 @@ export interface CatalogSound {
   name: string;
   emoji: string;
   species?: string;
+  article?: 'el' | 'la' | 'los' | 'las';
+  sound?: string;
+  verb?: string;
+  onomatopoeia?: string;
+  description?: string;
+  /** Último tramo del id («vaca»): forma la URL /<coleccion>/<slug>/. */
+  slug: string;
   file: string;
   duration: number;
   gain: number;
@@ -96,6 +103,12 @@ async function build(): Promise<CatalogCollection[]> {
       name: d.name,
       emoji: d.emoji,
       species: d.species,
+      article: d.article,
+      sound: d.sound,
+      verb: d.verb,
+      onomatopoeia: d.onomatopoeia,
+      description: d.description,
+      slug: rest[0]!,
       file: d.file,
       duration: d.duration,
       gain: d.gain,
@@ -103,6 +116,19 @@ async function build(): Promise<CatalogCollection[]> {
       origin: d.origin,
       credit: d.credit as Credit,
     });
+  }
+
+  // Cada sonido tiene su página /<coleccion>/<slug>/: el slug no puede repetirse dentro de una colección
+  // ni chocar con una ruta fija del sitio.
+  const reserved = new Set(['creditos', 'privacidad', 'data', 'audio', 'img', '404']);
+  for (const c of collections) {
+    if (c.sounds.length && reserved.has(c.id)) problems.push(`la colección «${c.id}» choca con una ruta fija del sitio`);
+    const seen = new Map<string, string>();
+    for (const s of c.sounds) {
+      const other = seen.get(s.slug);
+      if (other) problems.push(`${s.id}: el nombre de fichero «${s.slug}» ya lo usa ${other} (la URL /${c.id}/${s.slug}/ se repetiría)`);
+      seen.set(s.slug, s.id);
+    }
   }
 
   if (problems.length) {
@@ -126,6 +152,9 @@ export function getCatalog(): Promise<CatalogCollection[]> {
   cached ??= build();
   return cached;
 }
+
+/** URL de la página de un sonido: /animales/vaca/ */
+export const soundPath = (s: Pick<CatalogSound, 'collection' | 'slug'>) => `/${s.collection}/${s.slug}/`;
 
 /** Lo mínimo que necesita la app en el navegador (sin créditos). */
 export function toManifest(c: CatalogCollection) {
