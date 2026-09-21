@@ -6,9 +6,23 @@ const catalog = await getCatalog();
 // Solo lo mínimo para pintar los filtros; los sonidos se piden después (/data/<coleccion>.json).
 const collections = catalog.map((c) => ({ id: c.id, name: c.name, emoji: c.emoji, count: c.sounds.length }));
 const audioBase: string = import.meta.env.PUBLIC_AUDIO_BASE ?? '/audio/';
+
+// Datos reales del catálogo para la descripción: nº de sonidos de animales y sus categorías.
+const animals = catalog.find((c) => c.id === 'animales');
+const total = animals ? animals.sounds.length : catalog.reduce((n, c) => n + c.sounds.length, 0);
+const cats = (animals?.categories ?? []).filter((k) => animals!.sounds.some((s) => s.category === k.id)).map((k) => k.name.toLowerCase());
+const catList = cats.length > 1 ? `${cats.slice(0, -1).join(', ')} e ${cats.at(-1)}` : (cats[0] ?? '');
+const title = 'Sonidos de animales al azar: adivina qué animal es | ¿Qué suena?';
+const description = `Escucha ${total} sonidos reales de animales al azar y adivina cuál es. ${catList.charAt(0).toUpperCase()}${catList.slice(1)}. Gratis y sin registro.`;
 ---
-<Base path="/">
+<Base
+  title={title}
+  description={description}
+  path="/"
+  jsonLd={[{ '@context': 'https://schema.org', '@type': 'WebSite', name: '¿Qué suena?', url: 'https://quesuena.es/', inLanguage: 'es-ES' }]}
+>
   <main id="app" data-audio-base={audioBase}>
+    <h1 class="lead-title">Escucha un sonido al azar y adivina qué es</h1>
     <div class="chips" id="filters" role="group" aria-label="Colección" hidden></div>
 
     <section class="stage-block">
@@ -40,6 +54,18 @@ const audioBase: string = import.meta.env.PUBLIC_AUDIO_BASE ?? '/audio/';
         <summary id="count">Colección</summary>
         <div id="grid" class="groups"></div>
       </details>
+    </section>
+
+    <section class="intro">
+      <h2>Un juego para reconocer sonidos de animales</h2>
+      <p>
+        ¿Qué suena? es un juego gratuito: tocas el círculo, escuchas un sonido y adivinas qué animal es. Con «Adivinar antes de ver»
+        el nombre no aparece hasta que pulsas «Revelar», y lo que vas oyendo se guarda en tu colección.
+      </p>
+      <p>
+        Los sonidos son grabaciones reales con licencias abiertas. Puedes ver el autor y la licencia de cada uno en los
+        <a href="/creditos/">créditos de los sonidos</a>.
+      </p>
     </section>
   </main>
 
