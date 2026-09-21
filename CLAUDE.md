@@ -10,6 +10,7 @@ Astro (salida estática) + TypeScript + CSS propio (sin Tailwind, sin frameworks
 
 - `npm run dev` · `npm run build` (valida el contenido) · `npm run preview`
 - `npm run ingest` procesa `raw/` (necesita ffmpeg)
+- `npm run check:seo` revisa `dist/` tras el build (títulos, descripciones, H1, canónicas, enlaces, JSON-LD, sitemap)
 - No hay tests automáticos: la comprobación es que `npm run build` pase y probar en el navegador.
 
 ## Modelo de contenido (lo más importante)

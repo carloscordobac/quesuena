@@ -35,6 +35,8 @@ colección   Animales            (src/content/collections.json)
 }
 ```
 
+   Campos opcionales para la página del sonido (ver «Páginas por sonido» más abajo): `article`, `sound`, `verb`, `onomatopoeia` y `description`.
+
 4. `npm run ingest`. El script:
    - quita el silencio del principio y del final, pasa a mono y recorta a 8 s con fundido;
    - guarda `public/audio/<coleccion>/<categoria>/<id>.mp3`;
@@ -46,6 +48,22 @@ Opciones: `npm run ingest -- --force` rehace los ya procesados; `npm run ingest 
 ### Sin script
 
 También puedes dejar tú el mp3 en `public/audio/…` y escribir la ficha en `src/content/sounds/…` (mismos campos más `file`, `duration` y `gain`). El build te dirá qué falta.
+
+## Páginas por sonido
+
+Cada sonido tiene su página `/<coleccion>/<id>/` (por ejemplo `/animales/vaca/`) y cada colección con sonidos, su concentrador `/<coleccion>/`. Se generan solas del catálogo. El nombre de fichero del sonido no puede repetirse dentro de la colección ni llamarse como una ruta fija del sitio (`creditos`, `privacidad`, `data`…): el build avisa.
+
+Campos opcionales de la ficha, que enriquecen la página. **Si un dato no existe o no se puede verificar, se deja sin poner y la página no lo muestra. No se inventa nada.**
+
+| Campo | Ejemplo | Para qué |
+| --- | --- | --- |
+| `article` | `"el"` (`el`, `la`, `los`, `las`) | Escribir «Sonido del gato», «Sonido de la vaca». Sin él, el título es «Gato: escucha su sonido». |
+| `sound` | `"mugido"` | Cómo se llama el sonido. |
+| `verb` | `"mugir"` | El verbo de la voz del animal. |
+| `onomatopoeia` | `"muuu"` | Onomatopeya. |
+| `description` | `"Las vacas…"` | 1-2 frases con un dato útil y cierto (máx. 280 caracteres). |
+
+Para las voces de los animales, la fuente de referencia es el *Diccionario de la lengua española* (RAE); para el resto, enciclopedias o fuentes científicas. `npm run ingest` copia estos campos de la ficha de `raw/` a la del sonido. Después de un cambio de contenido, `npm run build` y `npm run check:seo` (títulos, descripciones, H1, canónicas, enlaces, JSON-LD y sitemap).
 
 ## Licencias válidas (`credit.license`)
 
