@@ -434,6 +434,112 @@ main#app {
   margin: 0 0 8px;
 }
 
+/* ---------- Concentrador y fichas de sonido ---------- */
+.pill-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.crumbs ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+.crumbs li + li::before {
+  content: '/';
+  margin: 0 8px;
+}
+.crumbs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.crumbs [aria-current] {
+  color: var(--ink);
+  font-weight: 600;
+}
+.player {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 0 20px;
+}
+.say {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 16px;
+  margin: 0 0 8px;
+}
+.say dt {
+  color: var(--ink-2);
+}
+.say dd {
+  margin: 0;
+  font-weight: 600;
+}
+.sound-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+.sound-groups h2,
+.sound-groups h3,
+.sound-groups h4 {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.sound-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+.sound-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.sound-links a:hover {
+  border-color: var(--ink);
+}
+.credit-detail {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.all-sounds {
+  max-width: 100%;
+  width: 100%;
+}
+.all-sounds > h2 {
+  margin-bottom: 10px;
+}
+.all-sounds .sound-groups h3,
+.all-sounds .sound-groups h4 {
+  font-size: 1rem;
+  color: var(--ink-2);
+}
+.all-sounds p a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 /* ---------- Colección ---------- */
 .more {
   display: flex;

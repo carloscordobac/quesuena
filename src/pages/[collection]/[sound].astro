@@ -1,0 +1,110 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getCatalog, soundPath, type CatalogCollection, type CatalogSound } from '../../lib/catalog';
+import { breadcrumbLd, isoDuration, soundDescription, soundHeading, soundTitle } from '../../lib/seo';
+import licenses from '../../lib/licenses.json';
+
+// Una página por sonido: /animales/vaca/
+export const getStaticPaths = (async () => {
+  const catalog = await getCatalog();
+  return catalog.flatMap((c) =>
+    c.sounds.map((s) => ({ params: { collection: c.id, sound: s.slug }, props: { collection: c, sound: s } })),
+  );
+}) satisfies GetStaticPaths;
+
+const { collection, sound: s } = Astro.props as { collection: CatalogCollection; sound: CatalogSound };
+const site = Astro.site!;
+const category = collection.categories.find((k) => k.id === s.category)!;
+const license = licenses[s.credit.license];
+const originLabel = { grabacion: '', recreacion: 'Recreación', sintetico: 'Sonido sintético' }[s.origin];
+
+const audioBase: string = import.meta.env.PUBLIC_AUDIO_BASE ?? '/audio/';
+const audioSrc = `${audioBase}${s.file}`;
+const audioUrl = new URL(audioSrc, site).href;
+const url = new URL(soundPath(s), site).href;
+
+const heading = soundHeading(s);
+const title = soundTitle(s);
+const description = soundDescription(s, category.name);
+
+// Hasta 6 sonidos de la misma categoría: los siguientes en orden alfabético, dando la vuelta.
+const same = collection.sounds.filter((x) => x.category === s.category);
+const at = same.findIndex((x) => x.id === s.id);
+const related = Array.from({ length: Math.min(6, same.length - 1) }, (_, i) => same[(at + 1 + i) % same.length]!);
+
+const hasWords = Boolean(s.sound || s.verb || s.onomatopoeia || s.description);
+
+const jsonLd = [
+  breadcrumbLd([
+    { name: 'Inicio', url: new URL('/', site).href },
+    { name: collection.name, url: new URL(`/${collection.id}/`, site).href },
+    { name: s.name, url },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AudioObject',
+    name: heading,
+    ...(s.description ? { description: s.description } : {}),
+    url,
+    contentUrl: audioUrl,
+    encodingFormat: 'audio/mpeg',
+    duration: isoDuration(s.duration),
+    license: license.url,
+    creator: s.credit.author,
+    isAccessibleForFree: true,
+    inLanguage: 'es-ES',
+  },
+];
+---
+<Base title={title} description={description} path={soundPath(s)} tone={s.hue} jsonLd={jsonLd}>
+  <main class="page">
+    <Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: collection.name, href: `/${collection.id}/` }, { name: s.name }]} />
+
+    <h1 class="page-title">{heading}</h1>
+    <p class="page-lead">
+      {category.name}{s.species && <> · {s.species}</>}
+    </p>
+
+    <audio class="player" controls preload="none" aria-label={`Escuchar: ${heading}`}>
+      <source src={audioSrc} type="audio/mpeg" />
+      Tu navegador no puede reproducir audio.
+    </audio>
+
+    {hasWords && (
+      <section class="credit-section">
+        <h2>Cómo suena</h2>
+        <dl class="say">
+          {s.sound && (<><dt>Sonido</dt><dd>{s.sound}</dd></>)}
+          {s.verb && (<><dt>Verbo</dt><dd>{s.verb}</dd></>)}
+          {s.onomatopoeia && (<><dt>Onomatopeya</dt><dd>{s.onomatopoeia}</dd></>)}
+        </dl>
+        {s.description && <p>{s.description}</p>}
+      </section>
+    )}
+
+    <p><a class="pill pill-link" href="/">Juega a adivinar</a></p>
+
+    {related.length > 0 && (
+      <section class="credit-section">
+        <h2>Más sonidos de la categoría {category.name}</h2>
+        <ul class="sound-links">
+          {related.map((r) => (
+            <li><a href={soundPath(r)}>{r.name}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section class="credit-section">
+      <h2>Créditos y licencia</h2>
+      <p class="credit-detail">
+        <a href={s.credit.url} rel="noopener">{s.credit.title}</a>, {s.credit.author}.{' '}
+        <a href={license.url} rel="noopener">{license.label}</a>.
+        {originLabel && <span class="credit-badge">{originLabel}</span>}
+        {' '}<a href="/creditos/">Ver todos los créditos</a>.
+      </p>
+    </section>
+  </main>
+</Base>

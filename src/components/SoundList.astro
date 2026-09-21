@@ -1,0 +1,27 @@
+---
+/* Enlaces a las páginas de sonidos, agrupados por categoría. Se renderiza en el servidor (visible sin JavaScript). */
+import { soundPath, type CatalogCollection } from '../lib/catalog';
+
+interface Props {
+  collection: CatalogCollection;
+  /** Nivel de encabezado de cada categoría (2-4). */
+  level?: 2 | 3 | 4;
+}
+const { collection, level = 3 } = Astro.props;
+const Heading = `h${level}` as 'h2' | 'h3' | 'h4';
+const groups = collection.categories
+  .map((k) => ({ k, items: collection.sounds.filter((s) => s.category === k.id) }))
+  .filter((g) => g.items.length);
+---
+<div class="sound-groups">
+  {groups.map(({ k, items }) => (
+    <div>
+      <Heading>{k.name}</Heading>
+      <ul class="sound-links">
+        {items.map((s) => (
+          <li><a href={soundPath(s)}>{s.name}</a></li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

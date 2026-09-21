@@ -1,0 +1,47 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SoundList from '../../components/SoundList.astro';
+import { getCatalog, type CatalogCollection } from '../../lib/catalog';
+import { breadcrumbLd } from '../../lib/seo';
+
+// Un concentrador por colección con sonidos: /animales/, /dinosaurios/…
+export const getStaticPaths = (async () => {
+  const catalog = await getCatalog();
+  return catalog.map((c) => ({ params: { collection: c.id }, props: { collection: c } }));
+}) satisfies GetStaticPaths;
+
+const { collection } = Astro.props as { collection: CatalogCollection };
+const site = Astro.site!;
+const label = collection.name.toLocaleLowerCase('es');
+const cats = collection.categories
+  .filter((k) => collection.sounds.some((s) => s.category === k.id))
+  .map((k) => k.name.toLocaleLowerCase('es'));
+const catList = cats.length > 1 ? `${cats.slice(0, -1).join(', ')} e ${cats.at(-1)}` : (cats[0] ?? '');
+const n = collection.sounds.length;
+const title = `Sonidos de ${label}: escucha ${n} y adivina cuál es | ¿Qué suena?`;
+const description = `Escucha ${n} sonidos reales de ${label} agrupados por categoría: ${catList}. Toca uno para oírlo y ver quién lo grabó.`;
+const path = `/${collection.id}/`;
+---
+<Base
+  title={title}
+  description={description}
+  path={path}
+  jsonLd={[
+    breadcrumbLd([
+      { name: 'Inicio', url: new URL('/', site).href },
+      { name: collection.name, url: new URL(path, site).href },
+    ]),
+  ]}
+>
+  <main class="page">
+    <Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: collection.name }]} />
+    <h1 class="page-title">Sonidos de {label}</h1>
+    <p class="page-lead">
+      {n} sonidos reales de {label}, agrupados por categoría. Toca uno para escucharlo y ver el autor de la grabación y su licencia.
+    </p>
+    <p><a class="pill pill-link" href="/">Juega a adivinar</a></p>
+    <SoundList collection={collection} level={2} />
+  </main>
+</Base>
