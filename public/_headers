@@ -12,6 +12,8 @@
 /audio/*
   Cache-Control: public, max-age=604800
 
-# Catálogo de sonidos por colección.
+# Catálogo de sonidos por colección. Sin indexar los JSON, pero sin bloquearlos en robots.txt:
+# el navegador de Google necesita leerlos para renderizar la app.
 /data/*
   Cache-Control: public, max-age=300
+  X-Robots-Tag: noindex
