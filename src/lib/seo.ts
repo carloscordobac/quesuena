@@ -14,30 +14,33 @@ export function soundHeading(s: Pick<CatalogSound, 'name' | 'article'>): string 
   return de ? `Sonido ${de}` : `Sonido: ${s.name}`;
 }
 
-/** Título único, palabra clave primero y ≤ 60 caracteres (se recorta por variantes, nunca a mitad de palabra). */
+/** Título único, palabra clave primero y ≤ 60 caracteres (se acorta por variantes, nunca a mitad de palabra). */
 export function soundTitle(s: CatalogSound): string {
-  const h = soundHeading(s);
   const hasWords = Boolean(s.sound || s.verb || s.onomatopoeia);
-  const options = [hasWords ? `${h}: escúchalo y cómo se dice` : `${h}: escúchalo`, `${h}: escúchalo`, h];
+  const de = ofName(s);
+  // Sin artículo verificado no se escribe «del/de la»: se usa el nombre tal cual.
+  const options = de
+    ? [hasWords ? `Sonido ${de}: escúchalo y cómo se dice` : `Sonido ${de}: escúchalo`, `Sonido ${de}: escúchalo`, `Sonido ${de}`]
+    : [`${s.name}: escucha su sonido`, s.name];
   const titles = options.map((t) => `${t} | ${BRAND}`);
   return titles.find((t) => t.length <= 60) ?? titles.at(-1)!;
 }
 
-/** Primera frase (o el texto entero) recortada a `max` caracteres en un límite de frase. */
+/** Primera frase (o el texto entero) de una descripción. */
 function firstSentence(text: string): string {
   const m = /^.*?[.!?](?=\s|$)/.exec(text.trim());
   return (m ? m[0] : text.trim()).trim();
 }
 
 /** Meta description única de 120-155 caracteres, montada con datos reales de la ficha. */
-export function soundDescription(s: CatalogSound, categoryName: string): string {
+export function soundDescription(s: CatalogSound, categoryName: string, collectionName: string): string {
   const de = ofName(s);
-  const subject = de ? `el sonido ${de}` : `el sonido: ${s.name.toLocaleLowerCase('es')}`;
+  const subject = de ? `el sonido ${de}` : `el sonido de «${s.name}»`;
   const head = `Escucha ${subject}${s.sound || s.verb || s.onomatopoeia ? ' y descubre cómo se dice' : ''}.`;
   const extras = [
     s.description ? firstSentence(s.description) : '',
-    `Grabación real con licencia abierta, categoría ${categoryName.toLocaleLowerCase('es')}.`,
-    'Juega a adivinar en ¿Qué suena?',
+    `Grabación real con licencia abierta de la categoría ${categoryName.toLocaleLowerCase('es')}.`,
+    `Juega a adivinar ${collectionName.toLocaleLowerCase('es')} por su sonido en ¿Qué suena?`,
   ].filter(Boolean);
   let out = head;
   for (const part of extras) {

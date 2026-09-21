@@ -27,7 +27,7 @@ const url = new URL(soundPath(s), site).href;
 
 const heading = soundHeading(s);
 const title = soundTitle(s);
-const description = soundDescription(s, category.name);
+const description = soundDescription(s, category.name, collection.name);
 
 // Hasta 6 sonidos de la misma categoría: los siguientes en orden alfabético, dando la vuelta.
 const same = collection.sounds.filter((x) => x.category === s.category);
