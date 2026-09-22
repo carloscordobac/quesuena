@@ -1,0 +1,15 @@
+{
+  "name": "Velociraptor",
+  "emoji": "🦖",
+  "file": "dinosaurios/general/velociraptor.mp3",
+  "duration": 1.86,
+  "gain": 6.4,
+  "origin": "recreacion",
+  "species": "Recreación de diseño sonoro, no es un sonido real",
+  "credit": {
+    "title": "raptorshreak",
+    "author": "Nerdwizard78",
+    "license": "CC0-1.0",
+    "url": "https://freesound.org/people/Nerdwizard78/sounds/643850/"
+  }
+}

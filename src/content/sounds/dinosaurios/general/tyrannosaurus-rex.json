@@ -1,0 +1,15 @@
+{
+  "name": "Tyrannosaurus rex",
+  "emoji": "🦖",
+  "file": "dinosaurios/general/tyrannosaurus-rex.mp3",
+  "duration": 8,
+  "gain": -4.7,
+  "origin": "recreacion",
+  "species": "Recreación de diseño sonoro, no es un sonido real",
+  "credit": {
+    "title": "Monster Growl_with Reverb.wav",
+    "author": "cylon8472",
+    "license": "CC0-1.0",
+    "url": "https://freesound.org/people/cylon8472/sounds/366672/"
+  }
+}

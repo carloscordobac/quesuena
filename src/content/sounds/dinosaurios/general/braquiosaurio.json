@@ -1,0 +1,15 @@
+{
+  "name": "Braquiosaurio",
+  "emoji": "🦕",
+  "file": "dinosaurios/general/braquiosaurio.mp3",
+  "duration": 8,
+  "gain": -4.8,
+  "origin": "recreacion",
+  "species": "Recreación de diseño sonoro, no es un sonido real",
+  "credit": {
+    "title": "Sea Creature Roar",
+    "author": "Bikkit99",
+    "license": "CC0-1.0",
+    "url": "https://freesound.org/people/Bikkit99/sounds/837799/"
+  }
+}

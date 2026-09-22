@@ -1,0 +1,15 @@
+{
+  "name": "Pteranodon",
+  "emoji": "🦖",
+  "file": "dinosaurios/general/pteranodon.mp3",
+  "duration": 6.73,
+  "gain": -1.5,
+  "origin": "recreacion",
+  "species": "Recreación de diseño sonoro, no es un sonido real",
+  "credit": {
+    "title": "pterodactyl.wav",
+    "author": "stomachache",
+    "license": "CC0-1.0",
+    "url": "https://freesound.org/people/stomachache/sounds/53263/"
+  }
+}

@@ -16,8 +16,7 @@
     "name": "Dinosaurios",
     "emoji": "🦖",
     "categories": [
-      { "id": "herbivoros", "name": "Herbívoros", "hue": 95 },
-      { "id": "carnivoros", "name": "Carnívoros", "hue": 20 }
+      { "id": "general", "name": "Dinosaurios", "hue": 95 }
     ]
   },
   {

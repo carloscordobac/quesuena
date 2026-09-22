@@ -1,0 +1,15 @@
+{
+  "name": "Anquilosaurio",
+  "emoji": "🦕",
+  "file": "dinosaurios/general/anquilosaurio.mp3",
+  "duration": 5.54,
+  "gain": 1.5,
+  "origin": "recreacion",
+  "species": "Recreación de diseño sonoro, no es un sonido real",
+  "credit": {
+    "title": "Dino Hiss Dragon Roar",
+    "author": "999999990",
+    "license": "CC0-1.0",
+    "url": "https://freesound.org/people/999999990/sounds/320345/"
+  }
+}

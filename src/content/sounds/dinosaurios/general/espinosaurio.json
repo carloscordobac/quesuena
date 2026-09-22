@@ -1,0 +1,15 @@
+{
+  "name": "Espinosaurio",
+  "emoji": "🦖",
+  "file": "dinosaurios/general/espinosaurio.mp3",
+  "duration": 2.85,
+  "gain": -0.5,
+  "origin": "recreacion",
+  "species": "Recreación de diseño sonoro, no es un sonido real",
+  "credit": {
+    "title": "Dinosaur call",
+    "author": "Alessandrobraz",
+    "license": "CC0-1.0",
+    "url": "https://freesound.org/people/Alessandrobraz/sounds/708641/"
+  }
+}
