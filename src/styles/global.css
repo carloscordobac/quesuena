@@ -603,10 +603,6 @@ main#app {
   border-top: 1px solid var(--line);
 }
 
-.explore {
-  max-width: 100%;
-  width: 100%;
-}
 .category-links {
   list-style: none;
   margin: 8px 0 0;

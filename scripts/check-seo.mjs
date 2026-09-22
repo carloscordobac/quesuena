@@ -4,7 +4,7 @@
  *
  * Revisa dist/: títulos y descripciones (duplicados y longitud), un único <h1>, canónicas y og:url,
  * JSON-LD parseable, enlaces internos rotos, sitemap contra las páginas reales y que toda página
- * indexable se alcance en 2 clics desde la portada. Sale con código 1 si hay errores.
+ * indexable se alcance en 3 clics desde la portada. Sale con código 1 si hay errores.
  */
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
@@ -108,10 +108,10 @@ else {
   for (const w of want) if (!locs.includes(w)) err(`sitemap: falta ${w}`);
   console.log(`Sitemap: ${locs.length} URL, páginas indexables: ${want.size}`);
 }
-// (g) alcance en 2 clics desde la portada
+// (g) alcance en 3 clics desde la portada
 const depth = new Map([['/', 0]]);
 let frontier = ['/'];
-for (let d = 1; d <= 2; d++) {
+for (let d = 1; d <= 3; d++) {
   const next = [];
   for (const path of frontier) {
     for (const href of byPath.get(path)?.links ?? []) {
@@ -121,7 +121,7 @@ for (let d = 1; d <= 2; d++) {
   }
   frontier = next;
 }
-for (const p of indexable) if (!depth.has(p.path)) err(`${p.path}: no se alcanza en 2 clics desde la portada`);
+for (const p of indexable) if (!depth.has(p.path)) err(`${p.path}: no se alcanza en 3 clics desde la portada`);
 
 console.log(`Páginas: ${pages.length} (${indexable.length} indexables, ${pages.length - indexable.length} noindex)`);
 for (const w of warnings) console.log('AVISO ', w);

@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { categoriesWithSounds, categoryPath, getCatalog } from '../lib/catalog';
+import { getCatalog } from '../lib/catalog';
 
 const catalog = await getCatalog();
 // Solo lo mínimo para pintar los filtros; los sonidos se piden después (/data/<coleccion>.json).
@@ -66,25 +66,6 @@ const description = `Escucha ${total} sonidos reales de animales al azar y adivi
         Los sonidos son grabaciones reales con licencias abiertas. Puedes ver el autor y la licencia de cada uno en los{' '}
         <a href="/creditos/">créditos de los sonidos</a>.
       </p>
-    </section>
-
-    <section class="intro explore">
-      <h2>Explora por categoría</h2>
-      <ul class="category-links">
-        {catalog.flatMap((c) => {
-          const catsC = categoriesWithSounds(c);
-          // Con una sola categoría no hay página de categoría (ver [category]/index.astro): se enlaza al hub.
-          const single = catsC.length === 1;
-          return catsC.map((k) => (
-            <li>
-              <a href={single ? `/${c.id}/` : categoryPath(c, k)}>
-                <span class="category-links-name">{single ? c.name : catalog.length > 1 ? `${c.name}: ${k.name}` : k.name}</span>
-                <span class="category-links-count">{k.count} sonido{k.count === 1 ? '' : 's'}</span>
-              </a>
-            </li>
-          ));
-        })}
-      </ul>
     </section>
   </main>
 
