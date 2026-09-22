@@ -1,0 +1,50 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { categoriesWithSounds, categoryPath, getCatalog, soundPath, type CatalogCategory, type CatalogCollection } from '../../../lib/catalog';
+import { breadcrumbLd } from '../../../lib/seo';
+
+// Una página por categoría con sonidos: /animales/granja/, /animales/aves/…
+export const getStaticPaths = (async () => {
+  const catalog = await getCatalog();
+  return catalog.flatMap((c) =>
+    categoriesWithSounds(c).map((k) => ({ params: { collection: c.id, category: k.id }, props: { collection: c, category: k } })),
+  );
+}) satisfies GetStaticPaths;
+
+const { collection, category } = Astro.props as { collection: CatalogCollection; category: CatalogCategory & { count: number } };
+const site = Astro.site!;
+const sounds = collection.sounds.filter((s) => s.category === category.id);
+const collLabel = collection.name.toLocaleLowerCase('es');
+const catLabel = category.name.toLocaleLowerCase('es');
+const path = categoryPath(collection, category);
+const title = `Sonidos de ${collLabel} de ${catLabel} | ¿Qué suena?`;
+const description = `Escucha ${sounds.length} sonidos reales de ${catLabel} (categoría de ${collLabel}) y adivina cuál es. Son grabaciones con licencia abierta, gratis y sin registro.`;
+---
+<Base
+  title={title}
+  description={description}
+  path={path}
+  jsonLd={[
+    breadcrumbLd([
+      { name: 'Inicio', url: new URL('/', site).href },
+      { name: collection.name, url: new URL(`/${collection.id}/`, site).href },
+      { name: category.name, url: new URL(path, site).href },
+    ]),
+  ]}
+>
+  <main class="page">
+    <Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: collection.name, href: `/${collection.id}/` }, { name: category.name }]} />
+    <h1 class="page-title">Sonidos de {catLabel}</h1>
+    <p class="page-lead">
+      {sounds.length} sonidos reales de {catLabel}, de la colección {collLabel}. Toca uno para escucharlo y ver el autor de la grabación y su licencia.
+    </p>
+    <p><a class="pill pill-link" href="/">Juega a adivinar</a></p>
+    <ul class="sound-links sound-links-emoji">
+      {sounds.map((s) => (
+        <li><a href={soundPath(s)}><span aria-hidden="true">{s.emoji}</span> {s.name}</a></li>
+      ))}
+    </ul>
+  </main>
+</Base>

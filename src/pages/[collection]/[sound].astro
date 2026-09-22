@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { getCatalog, soundPath, type CatalogCollection, type CatalogSound } from '../../lib/catalog';
+import { categoryPath, getCatalog, soundPath, type CatalogCollection, type CatalogSound } from '../../lib/catalog';
 import { breadcrumbLd, isoDuration, soundDescription, soundHeading, soundTitle } from '../../lib/seo';
 import licenses from '../../lib/licenses.json';
 
@@ -24,6 +24,7 @@ const audioBase: string = import.meta.env.PUBLIC_AUDIO_BASE ?? '/audio/';
 const audioSrc = `${audioBase}${s.file}`;
 const audioUrl = new URL(audioSrc, site).href;
 const url = new URL(soundPath(s), site).href;
+const catPath = categoryPath(collection, category);
 
 const heading = soundHeading(s);
 const title = soundTitle(s);
@@ -40,6 +41,7 @@ const jsonLd = [
   breadcrumbLd([
     { name: 'Inicio', url: new URL('/', site).href },
     { name: collection.name, url: new URL(`/${collection.id}/`, site).href },
+    { name: category.name, url: new URL(catPath, site).href },
     { name: s.name, url },
   ]),
   {
@@ -60,11 +62,18 @@ const jsonLd = [
 ---
 <Base title={title} description={description} path={soundPath(s)} tone={s.hue} jsonLd={jsonLd}>
   <main class="page">
-    <Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: collection.name, href: `/${collection.id}/` }, { name: s.name }]} />
+    <Breadcrumbs
+      items={[
+        { name: 'Inicio', href: '/' },
+        { name: collection.name, href: `/${collection.id}/` },
+        { name: category.name, href: catPath },
+        { name: s.name },
+      ]}
+    />
 
     <h1 class="page-title">{heading}</h1>
     <p class="page-lead">
-      {category.name}{s.species && <> · {s.species}</>}
+      <a href={catPath}>{category.name}</a>{s.species && <> · {s.species}</>}
     </p>
 
     <audio class="player" controls preload="none" aria-label={`Escuchar: ${heading}`}>

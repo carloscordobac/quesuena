@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import SoundList from '../components/SoundList.astro';
-import { getCatalog } from '../lib/catalog';
+import { categoriesWithSounds, categoryPath, getCatalog } from '../lib/catalog';
 
 const catalog = await getCatalog();
 // Solo lo mínimo para pintar los filtros; los sonidos se piden después (/data/<coleccion>.json).
@@ -69,15 +68,20 @@ const description = `Escucha ${total} sonidos reales de animales al azar y adivi
       </p>
     </section>
 
-    <section class="intro all-sounds">
-      <h2>Todos los sonidos</h2>
-      {catalog.map((c) => (
-        <>
-          {catalog.length > 1 && <h3><a href={`/${c.id}/`}>{c.name}</a></h3>}
-          <SoundList collection={c} level={catalog.length > 1 ? 4 : 3} />
-          {catalog.length === 1 && <p><a href={`/${c.id}/`}>Ver todos los sonidos de {c.name.toLocaleLowerCase('es')}</a></p>}
-        </>
-      ))}
+    <section class="intro explore">
+      <h2>Explora por categoría</h2>
+      <ul class="category-links">
+        {catalog.flatMap((c) =>
+          categoriesWithSounds(c).map((k) => (
+            <li>
+              <a href={categoryPath(c, k)}>
+                <span class="category-links-name">{catalog.length > 1 ? `${c.name}: ${k.name}` : k.name}</span>
+                <span class="category-links-count">{k.count} sonido{k.count === 1 ? '' : 's'}</span>
+              </a>
+            </li>
+          )),
+        )}
+      </ul>
     </section>
   </main>
 

@@ -156,6 +156,17 @@ export function getCatalog(): Promise<CatalogCollection[]> {
 /** URL de la página de un sonido: /animales/vaca/ */
 export const soundPath = (s: Pick<CatalogSound, 'collection' | 'slug'>) => `/${s.collection}/${s.slug}/`;
 
+/** URL de la página de una categoría: /animales/granja/ */
+export const categoryPath = (collection: Pick<CatalogCollection, 'id'>, category: Pick<CatalogCategory, 'id'>) =>
+  `/${collection.id}/${category.id}/`;
+
+/** Categorías de una colección que ya tienen sonidos, con su recuento. */
+export function categoriesWithSounds(c: CatalogCollection): (CatalogCategory & { count: number })[] {
+  return c.categories
+    .map((k) => ({ ...k, count: c.sounds.filter((s) => s.category === k.id).length }))
+    .filter((k) => k.count > 0);
+}
+
 /** Lo mínimo que necesita la app en el navegador (sin créditos). */
 export function toManifest(c: CatalogCollection) {
   return {

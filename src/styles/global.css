@@ -486,20 +486,6 @@ main#app {
   margin: 0;
   font-weight: 600;
 }
-.sound-groups {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 8px;
-}
-.sound-groups h2,
-.sound-groups h3,
-.sound-groups h4 {
-  margin: 0 0 4px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.1rem;
-}
 .sound-links {
   list-style: none;
   margin: 0;
@@ -527,22 +513,44 @@ main#app {
   overflow-wrap: anywhere;
 }
 
-.all-sounds {
+.sound-links-emoji a span {
+  margin-right: 6px;
+}
+
+.explore {
   max-width: 100%;
   width: 100%;
 }
-.all-sounds > h2 {
-  margin-bottom: 10px;
+.category-links {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.all-sounds .sound-groups h3,
-.all-sounds .sound-groups h4 {
-  font-size: 1rem;
-  color: var(--ink-2);
-}
-.all-sounds p a {
-  display: inline-flex;
+.category-links a {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 16px;
+  border: 2px solid var(--line);
+  text-decoration: none;
+}
+.category-links a:hover {
+  border-color: var(--ink);
+}
+.category-links-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+.category-links-count {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  white-space: nowrap;
 }
 
 /* ---------- Colección ---------- */
