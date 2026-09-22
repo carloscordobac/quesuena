@@ -514,6 +514,13 @@ main#app {
   align-items: center;
   text-decoration: none;
 }
+.play-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: 4px 0 28px;
+}
 .crumbs ol {
   list-style: none;
   margin: 0;
@@ -566,7 +573,7 @@ main#app {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0 6px;
+  gap: 8px 6px;
 }
 .sound-links a {
   display: inline-flex;
@@ -589,6 +596,11 @@ main#app {
 
 .sound-links-emoji a span {
   margin-right: 6px;
+}
+/* Separa la lista de sonidos del bloque de juego: una acción arriba, la lista para explorar abajo. */
+.category-sounds {
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
 }
 
 .explore {

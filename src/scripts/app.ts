@@ -69,6 +69,9 @@ const state = {
   revealed: false,
   guess: false,
   filter: ALL,
+  // Filtro de categoría: solo llega por la URL (enlaces «solo X» de una página de categoría),
+  // nunca se guarda en localStorage, para que una visita normal a «/» sea siempre con todos.
+  category: null as string | null,
   dur: 1,
   error: '' as '' | 'unsupported' | 'network',
 };
@@ -116,7 +119,8 @@ function activeManifests(): Manifest[] {
     .filter((m): m is Manifest => !!m);
 }
 function pool(): Sound[] {
-  return activeManifests().flatMap((m) => m.sounds);
+  const sounds = activeManifests().flatMap((m) => m.sounds);
+  return state.category ? sounds.filter((s) => s.cat === state.category) : sounds;
 }
 function categoryName(sound: Sound): string {
   for (const m of manifests.values()) {
@@ -220,6 +224,7 @@ function buildGrid(): void {
   const multi = activeManifests().length > 1;
   for (const m of activeManifests()) {
     for (const cat of m.categories) {
+      if (state.category && cat.id !== state.category) continue;
       const items = m.sounds.filter((s) => s.cat === cat.id);
       if (!items.length) continue;
       const group = document.createElement('div');
@@ -285,6 +290,7 @@ function buildFilters(): void {
 
 function setFilter(id: string): void {
   state.filter = id;
+  state.category = null;
   track('filter_collection', { collection: id });
   bag = [];
   lastId = null;
@@ -371,8 +377,21 @@ guessBtn.addEventListener('click', () => {
   save();
 });
 
+// Enlaces «Juega a adivinar (solo X)» de una página de categoría: filtran esta partida
+// y desaparecen de la URL (no se guardan; una visita normal a «/» siempre es con todos).
+function applyUrlFilter(): void {
+  const params = new URLSearchParams(location.search);
+  const col = params.get('coleccion');
+  const cat = params.get('categoria');
+  if (!col && !cat) return;
+  if (col && collections.some((c) => c.id === col)) state.filter = col;
+  if (cat) state.category = cat; // se valida contra el catálogo real en cuanto carga
+  history.replaceState(null, '', location.pathname);
+}
+
 /* ---------- Arranque ---------- */
 loadSaved();
+applyUrlFilter();
 if (state.filter !== ALL && !collections.some((c) => c.id === state.filter)) state.filter = ALL;
 guessBtn.setAttribute('aria-checked', String(state.guess));
 buildFilters();
@@ -380,6 +399,10 @@ render();
 
 ready = loadManifests().then(
   () => {
+    // Categoría inexistente o sin sonidos en la colección activa: se ignora en vez de vaciar la partida.
+    if (state.category && !activeManifests().some((m) => m.categories.some((k) => k.id === state.category))) {
+      state.category = null;
+    }
     buildGrid();
     // Descarta ids guardados que ya no existen en el catálogo.
     for (const id of [...heard]) if (!soundById(id)) heard.delete(id);

@@ -21,6 +21,10 @@ const catLabel = category.name.toLocaleLowerCase('es');
 const path = categoryPath(collection, category);
 const title = `Sonidos de ${collLabel} de ${catLabel} | ¿Qué suena?`;
 const description = `Escucha ${sounds.length} sonidos reales de ${catLabel} (categoría de ${collLabel}) y adivina cuál es. Son grabaciones con licencia abierta, gratis y sin registro.`;
+
+// Con menos de 4 sonidos no hay distractores suficientes para el modo juego: se oculta el botón de la categoría.
+const playCategoryHref = `/?coleccion=${collection.id}&categoria=${category.id}`;
+const showCategoryPlay = category.count >= 4;
 ---
 <Base
   title={title}
@@ -40,8 +44,14 @@ const description = `Escucha ${sounds.length} sonidos reales de ${catLabel} (cat
     <p class="page-lead">
       {sounds.length} sonidos reales de {catLabel}, de la colección {collLabel}. Toca uno para escucharlo y ver el autor de la grabación y su licencia.
     </p>
-    <p><a class="pill pill-link" href="/">Juega a adivinar</a></p>
-    <ul class="sound-links sound-links-emoji">
+    <div class="play-block">
+      <a class="pill pill-link" href="/">Juega a adivinar</a>
+      {showCategoryPlay && (
+        <a class="pill pill-link" href={playCategoryHref}>Juega a adivinar (solo {catLabel})</a>
+      )}
+    </div>
+
+    <ul class="sound-links sound-links-emoji category-sounds">
       {sounds.map((s) => (
         <li><a href={soundPath(s)}><span aria-hidden="true">{s.emoji}</span> {s.name}</a></li>
       ))}
