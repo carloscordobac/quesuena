@@ -33,15 +33,16 @@ function firstSentence(text: string): string {
 }
 
 /** Meta description única de 120-155 caracteres, montada con datos reales de la ficha.
- *  Prueba colas de distinta longitud y usa la más larga que quepa, para no quedarse corta
- *  cuando la descripción verificada ya ocupa buena parte del hueco. */
+ *  - Con `description`: usa su primera frase; si se pasa de 155, la recorta por palabra
+ *    entera y añade «…» (nunca se corta el encabezado, que es lo esencial).
+ *  - Sin `description`: rellena con una cola de la categoría/marca, probando de la más
+ *    larga a la más corta, hasta que el total cae en el hueco de 120-155. */
 export function soundDescription(s: CatalogSound, categoryName: string, collectionName: string): string {
   const de = ofName(s);
   const subject = de ? `el sonido ${de}` : `el sonido de «${s.name}»`;
   const head = `Escucha ${subject}${s.sound || s.verb || s.onomatopoeia ? ' y descubre cómo se dice' : ''}.`;
   const catLower = categoryName.toLocaleLowerCase('es');
   const collLower = collectionName.toLocaleLowerCase('es');
-  const base = s.description ? `${head} ${firstSentence(s.description)}` : head;
 
   const tails = [
     `Grabación real con licencia abierta de la categoría ${catLower}. Juega a adivinar ${collLower} por su sonido en ¿Qué suena?.`,
@@ -51,13 +52,34 @@ export function soundDescription(s: CatalogSound, categoryName: string, collecti
     `Categoría ${catLower}, en ¿Qué suena?.`,
     `En ¿Qué suena?.`,
   ];
-  for (const tail of tails) {
-    const candidate = `${base} ${tail}`;
-    if (candidate.length >= 120 && candidate.length <= 155) return candidate;
+
+  if (!s.description) {
+    for (const tail of tails) {
+      const candidate = `${head} ${tail}`;
+      if (candidate.length >= 120 && candidate.length <= 155) return candidate;
+    }
+    const fits = tails.map((t) => `${head} ${t}`).find((c) => c.length <= 155);
+    return fits ?? head;
   }
-  // Ninguna cola encaja (base ya muy larga o muy corta): la más corta que quepa, o la base sola.
-  const fits = tails.map((t) => `${base} ${t}`).find((c) => c.length <= 155);
-  return fits ?? base;
+
+  const sentence = firstSentence(s.description);
+  let candidate = `${head} ${sentence}`;
+  if (candidate.length > 155) {
+    // Deja hueco para el espacio y la elipsis, y corta por la última palabra entera.
+    const budget = 155 - head.length - 2;
+    let cut = sentence.slice(0, Math.max(0, budget));
+    const lastSpace = cut.lastIndexOf(' ');
+    if (lastSpace > 30) cut = cut.slice(0, lastSpace);
+    cut = cut.replace(/[,;:.\s]+$/, '');
+    return `${head} ${cut}…`;
+  }
+  if (candidate.length < 120) {
+    for (const tail of tails) {
+      const padded = `${candidate} ${tail}`;
+      if (padded.length >= 120 && padded.length <= 155) return padded;
+    }
+  }
+  return candidate;
 }
 
 /** Duración en ISO 8601 para schema.org: 8.05 s → «PT8.05S». */
