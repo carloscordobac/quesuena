@@ -98,9 +98,16 @@ a {
 /* ---------- Cabecera y pie ---------- */
 .top {
   width: 100%;
-  max-width: 560px;
+  padding: 14px 20px;
+}
+.top-inner {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 18px 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 24px;
 }
 .brand {
   display: inline-flex;
@@ -115,6 +122,73 @@ a {
   font-size: 1.45rem;
   line-height: 1;
   letter-spacing: -0.01em;
+}
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 22px;
+}
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.site-nav a:hover {
+  color: var(--ink);
+}
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 600 0.95rem var(--font-text);
+  cursor: pointer;
+}
+.nav-toggle-icon {
+  width: 20px;
+  height: 20px;
+}
+/* El botón y el plegado solo existen con JavaScript activo y por debajo de 600 px
+   (progressive enhancement: sin JS, el menú queda siempre visible en la cabecera).
+   Cerrado, el menú usa display:none: además de ocultarse, sale de la navegación por
+   tabulador (con solo recortar la altura, sus enlaces seguirían siendo alcanzables). */
+@media (max-width: 599px) {
+  body.nav-js .top-inner {
+    position: relative;
+  }
+  body.nav-js .nav-toggle {
+    display: inline-flex;
+  }
+  /* Menú desplegable superpuesto (no empuja el contenido ni tapa el aviso de cookies,
+     que va fijo abajo con z-index más alto). */
+  body.nav-js .site-nav {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 8px;
+    padding: 10px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    border-radius: 16px;
+  }
+  body.nav-js .site-nav[data-open] {
+    display: flex;
+  }
 }
 .foot {
   width: 100%;

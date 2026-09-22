@@ -5,6 +5,7 @@ import '../styles/global.css';
 import Logo from '../components/Logo.astro';
 import ConsentBanner from '../components/ConsentBanner.astro';
 import { ANALYTICS_ENABLED } from '../lib/site';
+import { getCatalog } from '../lib/catalog';
 // URLs con hash de las fuentes latin (las mismas que usa el CSS): se precargan porque salen en la primera pintura.
 import dynapuffLatin from '@fontsource-variable/dynapuff/files/dynapuff-latin-wdth-normal.woff2?url';
 import figtreeLatin from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2?url';
@@ -33,6 +34,9 @@ const {
 
 const canonical = new URL(path, Astro.site);
 const ogImage = new URL('/og.png', Astro.site);
+
+// Menú: Inicio, una colección por cada una con sonidos, Créditos y Privacidad.
+const catalog = await getCatalog();
 ---
 <!doctype html>
 <html lang="es" data-tone={tone === undefined ? undefined : 'on'} style={tone === undefined ? undefined : `--h: ${tone}`}>
@@ -71,10 +75,24 @@ const ogImage = new URL('/og.png', Astro.site);
   <body>
     {ANALYTICS_ENABLED && <ConsentBanner />}
     <header class="top">
-      <a class="brand" href="/" aria-label="¿Qué suena? Ir al inicio">
-        <Logo size={34} dot="var(--ink)" />
-        <span class="brand-word">¿qué suena?</span>
-      </a>
+      <div class="top-inner">
+        <a class="brand" href="/" aria-label="¿Qué suena? Ir al inicio">
+          <Logo size={34} dot="var(--ink)" />
+          <span class="brand-word">¿qué suena?</span>
+        </a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" hidden>
+          <svg class="nav-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+          <span class="nav-toggle-label">Menú</span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Principal">
+          <a href="/">Inicio</a>
+          {catalog.map((c) => <a href={`/${c.id}/`}>{c.name}</a>)}
+          <a href="/creditos/">Créditos</a>
+          <a href="/privacidad/">Privacidad</a>
+        </nav>
+      </div>
     </header>
     <slot />
     <footer class="foot">
@@ -93,5 +111,6 @@ const ogImage = new URL('/og.png', Astro.site);
       </div>
     </footer>
     {ANALYTICS_ENABLED && <script>import '../scripts/consent.ts';</script>}
+    <script>import '../scripts/nav.ts';</script>
   </body>
 </html>
