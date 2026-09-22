@@ -1,0 +1,15 @@
+{
+  "name": "Aspiradora",
+  "emoji": "🧹",
+  "file": "objetos/hogar/aspiradora.mp3",
+  "duration": 7.98,
+  "gain": 9.2,
+  "origin": "grabacion",
+  "article": "la",
+  "credit": {
+    "title": "Vacuum Cleaner, A.wav",
+    "author": "InspectorJ",
+    "license": "CC-BY-4.0",
+    "url": "https://freesound.org/people/InspectorJ/sounds/339673/"
+  }
+}

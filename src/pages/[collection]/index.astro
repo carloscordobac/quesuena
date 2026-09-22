@@ -24,7 +24,9 @@ const n = collection.sounds.length;
 const allReal = collection.sounds.every((s) => s.origin === 'grabacion');
 const title = `Sonidos de ${label}: escucha ${n} y adivina cuál es | ¿Qué suena?`;
 const description = single
-  ? `Escucha ${n} sonidos${allReal ? ' reales' : ' (recreaciones de diseño sonoro, no grabaciones reales)'} de ${label} y adivina cuál es. Toca uno para oírlo y ver su crédito.`
+  ? allReal
+    ? `Escucha ${n} sonidos reales de ${label} cotidianos y adivina cuál es. Toca uno para oírlo y ver quién lo grabó y con qué licencia.`
+    : `Escucha ${n} sonidos (recreaciones de diseño sonoro, no grabaciones reales) de ${label} y adivina cuál es. Toca uno para oírlo y ver su crédito.`
   : `Escucha ${n} sonidos reales de ${label} agrupados por categoría: ${catList}. Toca uno para oírlo y ver quién lo grabó.`;
 const path = `/${collection.id}/`;
 ---

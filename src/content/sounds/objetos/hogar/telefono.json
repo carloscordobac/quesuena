@@ -1,0 +1,15 @@
+{
+  "name": "Teléfono",
+  "emoji": "☎️",
+  "file": "objetos/hogar/telefono.mp3",
+  "duration": 8,
+  "gain": 5.7,
+  "origin": "grabacion",
+  "article": "el",
+  "credit": {
+    "title": "Old Telephone Ring.wav",
+    "author": "petaj",
+    "license": "CC-BY-3.0",
+    "url": "https://freesound.org/people/petaj/sounds/28353/"
+  }
+}

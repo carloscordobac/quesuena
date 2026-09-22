@@ -1,0 +1,15 @@
+{
+  "name": "Tetera",
+  "emoji": "🫖",
+  "file": "objetos/hogar/tetera.mp3",
+  "duration": 7.98,
+  "gain": 4.2,
+  "origin": "grabacion",
+  "article": "la",
+  "credit": {
+    "title": "Kettle Whistle 01",
+    "author": "aglinder",
+    "license": "CC0-1.0",
+    "url": "https://freesound.org/people/aglinder/sounds/264475/"
+  }
+}

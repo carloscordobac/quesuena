@@ -1,0 +1,15 @@
+{
+  "name": "Despertador",
+  "emoji": "⏰",
+  "file": "objetos/hogar/despertador.mp3",
+  "duration": 8,
+  "gain": -2.9,
+  "origin": "grabacion",
+  "article": "el",
+  "credit": {
+    "title": "Old alarm clock (ticking and ringing)",
+    "author": "PlayPauseAndRewind",
+    "license": "CC0-1.0",
+    "url": "https://freesound.org/people/PlayPauseAndRewind/sounds/132340/"
+  }
+}

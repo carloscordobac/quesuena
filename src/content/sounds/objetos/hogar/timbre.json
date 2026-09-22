@@ -1,0 +1,15 @@
+{
+  "name": "Timbre",
+  "emoji": "🔔",
+  "file": "objetos/hogar/timbre.mp3",
+  "duration": 5.82,
+  "gain": 0.4,
+  "origin": "grabacion",
+  "article": "el",
+  "credit": {
+    "title": "Door Bell",
+    "author": "kwahmah_02",
+    "license": "CC-BY-3.0",
+    "url": "https://freesound.org/people/kwahmah_02/sounds/275070/"
+  }
+}
