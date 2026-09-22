@@ -5,6 +5,10 @@
   "duration": 8.05,
   "gain": -1.0,
   "origin": "grabacion",
+  "article": "la",
+  "sound": "balido",
+  "verb": "balar",
+  "description": "El balido es la voz de la oveja y también del carnero, el cordero, la cabra, el gamo y el ciervo.",
   "credit": {
     "title": "Sheep bleating.ogg",
     "author": "earthcalling",

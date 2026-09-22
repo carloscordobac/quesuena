@@ -6,6 +6,8 @@
   "gain": 1.5,
   "origin": "grabacion",
   "species": "Serpiente de cascabel",
+  "article": "la",
+  "verb": "silbar",
   "credit": {
     "title": "Rattlesnake.ogg",
     "author": "US Fish & Wildlife Service",

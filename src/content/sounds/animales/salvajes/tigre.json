@@ -5,6 +5,10 @@
   "duration": 8.05,
   "gain": 2.4,
   "origin": "grabacion",
+  "article": "el",
+  "sound": "rugido",
+  "verb": "rugir",
+  "description": "«Rugir» se dice del león y de otros animales salvajes.",
   "credit": {
     "title": "439280 schots angry-tiger.wav",
     "author": "schots",

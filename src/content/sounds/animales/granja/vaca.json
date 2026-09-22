@@ -5,6 +5,11 @@
   "duration": 2.25,
   "gain": -1.5,
   "origin": "grabacion",
+  "article": "la",
+  "sound": "mugido",
+  "verb": "mugir",
+  "onomatopoeia": "mu",
+  "description": "El mugido es la voz de la vaca y también del toro.",
   "credit": {
     "title": "Mudchute cow 1.ogg",
     "author": "Secretlondon",

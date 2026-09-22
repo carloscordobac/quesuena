@@ -6,6 +6,10 @@
   "gain": 3.5,
   "origin": "grabacion",
   "species": "Ánsar común",
+  "article": "el",
+  "sound": "graznido",
+  "verb": "graznar",
+  "description": "El graznido es el grito de algunas aves, como el cuervo, el grajo o el ganso.",
   "credit": {
     "title": "Anser anser - Greylag Goose XC436358.mp3",
     "author": "Joost van Bruggen (xeno-canto)",

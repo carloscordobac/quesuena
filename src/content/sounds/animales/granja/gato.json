@@ -6,6 +6,11 @@
   "gain": -2.1,
   "origin": "grabacion",
   "species": "Gato siamés",
+  "article": "el",
+  "sound": "maullido",
+  "verb": "maullar",
+  "onomatopoeia": "miau",
+  "description": "«Maullar» significa dar maullidos: la voz característica del gato.",
   "credit": {
     "title": "Meow of a Siamese cat - freemaster2.wav",
     "author": "freemaster2",

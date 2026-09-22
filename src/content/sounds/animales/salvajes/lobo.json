@@ -5,6 +5,10 @@
   "duration": 8.05,
   "gain": -2.5,
   "origin": "grabacion",
+  "article": "el",
+  "sound": "aullido",
+  "verb": "aullar",
+  "description": "El aullido es la voz triste y prolongada del lobo, del perro y de otros animales.",
   "credit": {
     "title": "Wolf howls.ogg",
     "author": "US Fish & Wildlife Service",

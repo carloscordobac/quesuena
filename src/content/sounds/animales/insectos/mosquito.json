@@ -5,6 +5,9 @@
   "duration": 8.05,
   "gain": -3.9,
   "origin": "grabacion",
+  "article": "el",
+  "sound": "zumbido",
+  "verb": "zumbar",
   "credit": {
     "title": "Komar.flac",
     "author": "Muczek123",

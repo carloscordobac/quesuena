@@ -6,6 +6,9 @@
   "gain": -0.8,
   "origin": "grabacion",
   "species": "Cuco común",
+  "article": "el",
+  "onomatopoeia": "cucú",
+  "description": "«Cucú» imita el canto del cuco.",
   "credit": {
     "title": "Common Cuckoo (Gjøk) (Cuculus canorus) - Sortland, Norway 2023-07-14.mp3",
     "author": "Ryan Hodnett",

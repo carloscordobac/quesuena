@@ -6,6 +6,10 @@
   "gain": -1.0,
   "origin": "grabacion",
   "species": "Rebaño de cabras",
+  "article": "la",
+  "sound": "balido",
+  "verb": "balar",
+  "description": "El balido es la voz de la cabra y también de la oveja, el carnero, el cordero, el gamo y el ciervo.",
   "credit": {
     "title": "Herd of goats bleating.ogg",
     "author": "stephan",

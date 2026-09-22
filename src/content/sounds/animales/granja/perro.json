@@ -5,6 +5,10 @@
   "duration": 2.56,
   "gain": -0.7,
   "origin": "grabacion",
+  "article": "el",
+  "sound": "ladrido",
+  "verb": "ladrar",
+  "onomatopoeia": "guau",
   "credit": {
     "title": "Barking of a dog.ogg",
     "author": "Amada44",

@@ -6,6 +6,10 @@
   "gain": -0.4,
   "origin": "grabacion",
   "species": "Cochinillo",
+  "article": "el",
+  "sound": "gruñido",
+  "verb": "gruñir",
+  "description": "El gruñido es la voz del cerdo. También es la voz ronca con que el perro y otros animales amenazan.",
   "credit": {
     "title": "618483 foleyhaven piglet-squeal-01.flac",
     "author": "Foleyhaven",

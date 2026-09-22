@@ -6,6 +6,9 @@
   "gain": 0.9,
   "origin": "grabacion",
   "species": "Grillo de campo",
+  "article": "el",
+  "sound": "chirrido",
+  "description": "El grillo macho produce su sonido agudo y monótono frotando los élitros (las alas anteriores).",
   "credit": {
     "title": "Field cricket Gryllus pennsylvanicus.ogg",
     "author": "Thatcher",

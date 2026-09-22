@@ -5,6 +5,9 @@
   "duration": 8.05,
   "gain": -0.5,
   "origin": "grabacion",
+  "article": "el",
+  "sound": "glugluteo",
+  "verb": "gluglutear",
   "credit": {
     "title": "Gobbler.ogg",
     "author": "bod",

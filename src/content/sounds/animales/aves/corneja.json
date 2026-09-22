@@ -6,6 +6,8 @@
   "gain": 0.4,
   "origin": "grabacion",
   "species": "Corneja negra",
+  "article": "la",
+  "description": "La corneja es un ave de plumaje negro, parecida al cuervo pero de menor tamaño.",
   "credit": {
     "title": "Corvus corone - Carrion Crow XC507919.mp3",
     "author": "Marie-Lan Taÿ Pamart (xeno-canto)",

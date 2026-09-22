@@ -6,6 +6,10 @@
   "gain": 3.9,
   "origin": "grabacion",
   "species": "Grupo de pollitos",
+  "article": "el",
+  "verb": "piar",
+  "onomatopoeia": "pío",
+  "description": "«Piar» se dice de algunas aves y, en especial, de los polluelos.",
   "credit": {
     "title": "মুরগির বাচ্চার ডাক.oga",
     "author": "Md. Tahmid Hossain",

@@ -6,6 +6,10 @@
   "gain": 0.3,
   "origin": "grabacion",
   "species": "Tórtola turca",
+  "article": "la",
+  "sound": "arrullo",
+  "verb": "arrullar",
+  "description": "El arrullo es el sonido monótono con que las palomas y las tórtolas manifiestan el celo.",
   "credit": {
     "title": "Chant Tourterelle Turque domestiquée (Siffli).wav",
     "author": "Opsylac",

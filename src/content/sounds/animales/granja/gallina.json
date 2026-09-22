@@ -6,6 +6,10 @@
   "gain": -2.2,
   "origin": "grabacion",
   "species": "Gallina anunciando un huevo",
+  "article": "la",
+  "sound": "cacareo",
+  "verb": "cacarear",
+  "description": "«Cacarear» se dice tanto de la gallina como del gallo.",
   "credit": {
     "title": "Hen announcing shes lain an egg.ogg",
     "author": "alys",

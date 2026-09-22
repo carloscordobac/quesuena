@@ -6,6 +6,9 @@
   "gain": -5.4,
   "origin": "grabacion",
   "species": "Mosca doméstica",
+  "article": "la",
+  "sound": "zumbido",
+  "verb": "zumbar",
   "credit": {
     "title": "Zumbido de mosca doméstica.ogg",
     "author": "Luisalvaz",

@@ -1,6 +1,9 @@
 node_modules/
 dist/
 .astro/
+# Copias del sitemap en la raíz, para subirlas a mano donde haga falta (no son parte del sitio desplegado).
+/sitemap-index.xml
+/sitemap-0.xml
 .env
 .env.*
 !.env.example

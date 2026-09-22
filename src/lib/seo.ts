@@ -32,21 +32,32 @@ function firstSentence(text: string): string {
   return (m ? m[0] : text.trim()).trim();
 }
 
-/** Meta description única de 120-155 caracteres, montada con datos reales de la ficha. */
+/** Meta description única de 120-155 caracteres, montada con datos reales de la ficha.
+ *  Prueba colas de distinta longitud y usa la más larga que quepa, para no quedarse corta
+ *  cuando la descripción verificada ya ocupa buena parte del hueco. */
 export function soundDescription(s: CatalogSound, categoryName: string, collectionName: string): string {
   const de = ofName(s);
   const subject = de ? `el sonido ${de}` : `el sonido de «${s.name}»`;
   const head = `Escucha ${subject}${s.sound || s.verb || s.onomatopoeia ? ' y descubre cómo se dice' : ''}.`;
-  const extras = [
-    s.description ? firstSentence(s.description) : '',
-    `Grabación real con licencia abierta de la categoría ${categoryName.toLocaleLowerCase('es')}.`,
-    `Juega a adivinar ${collectionName.toLocaleLowerCase('es')} por su sonido en ¿Qué suena?`,
-  ].filter(Boolean);
-  let out = head;
-  for (const part of extras) {
-    if ((out + ' ' + part).length <= 155) out += ' ' + part;
+  const catLower = categoryName.toLocaleLowerCase('es');
+  const collLower = collectionName.toLocaleLowerCase('es');
+  const base = s.description ? `${head} ${firstSentence(s.description)}` : head;
+
+  const tails = [
+    `Grabación real con licencia abierta de la categoría ${catLower}. Juega a adivinar ${collLower} por su sonido en ¿Qué suena?.`,
+    `Es una grabación real con licencia abierta, de la categoría ${catLower}. Escúchala en ¿Qué suena? y aprende a reconocerla.`,
+    `Grabación real con licencia abierta, categoría ${catLower}. Escúchala en ¿Qué suena?.`,
+    `Grabación real de la categoría ${catLower}, en ¿Qué suena?.`,
+    `Categoría ${catLower}, en ¿Qué suena?.`,
+    `En ¿Qué suena?.`,
+  ];
+  for (const tail of tails) {
+    const candidate = `${base} ${tail}`;
+    if (candidate.length >= 120 && candidate.length <= 155) return candidate;
   }
-  return out;
+  // Ninguna cola encaja (base ya muy larga o muy corta): la más corta que quepa, o la base sola.
+  const fits = tails.map((t) => `${base} ${t}`).find((c) => c.length <= 155);
+  return fits ?? base;
 }
 
 /** Duración en ISO 8601 para schema.org: 8.05 s → «PT8.05S». */
