@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { categoriesWithSounds, categoryPath, getCatalog, type CatalogCollection } from '../../lib/catalog';
+import { categoriesWithSounds, categoryPath, getCatalog, soundPath, type CatalogCollection } from '../../lib/catalog';
 import { breadcrumbLd } from '../../lib/seo';
 
 // Un concentrador por colección con sonidos: /animales/, /dinosaurios/…
@@ -15,10 +15,17 @@ const { collection } = Astro.props as { collection: CatalogCollection };
 const site = Astro.site!;
 const label = collection.name.toLocaleLowerCase('es');
 const cats = categoriesWithSounds(collection);
+// Con una sola categoría no hay nada que agrupar: el hub lista los sonidos directamente,
+// sin pasar por una página de categoría intermedia (ver getStaticPaths de [category]/index.astro).
+const single = cats.length === 1;
 const catList = cats.length > 1 ? `${cats.slice(0, -1).map((k) => k.name.toLocaleLowerCase('es')).join(', ')} e ${cats.at(-1)!.name.toLocaleLowerCase('es')}` : (cats[0]?.name.toLocaleLowerCase('es') ?? '');
 const n = collection.sounds.length;
+// «reales» solo si de verdad son grabaciones: los dinosaurios son recreaciones de diseño sonoro.
+const allReal = collection.sounds.every((s) => s.origin === 'grabacion');
 const title = `Sonidos de ${label}: escucha ${n} y adivina cuál es | ¿Qué suena?`;
-const description = `Escucha ${n} sonidos reales de ${label} agrupados por categoría: ${catList}. Toca uno para oírlo y ver quién lo grabó.`;
+const description = single
+  ? `Escucha ${n} sonidos${allReal ? ' reales' : ' (recreaciones de diseño sonoro, no grabaciones reales)'} de ${label} y adivina cuál es. Toca uno para oírlo y ver su crédito.`
+  : `Escucha ${n} sonidos reales de ${label} agrupados por categoría: ${catList}. Toca uno para oírlo y ver quién lo grabó.`;
 const path = `/${collection.id}/`;
 ---
 <Base
@@ -36,18 +43,31 @@ const path = `/${collection.id}/`;
     <Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: collection.name }]} />
     <h1 class="page-title">Sonidos de {label}</h1>
     <p class="page-lead">
-      {n} sonidos reales de {label}, agrupados por categoría. Elige una para escuchar sus sonidos y ver quién los grabó.
+      {single ? (
+        <>{n} sonidos{allReal ? ' reales' : ' (recreaciones de diseño sonoro, no grabaciones reales)'} de {label}. Toca uno para escucharlo y ver su crédito.</>
+      ) : (
+        <>{n} sonidos reales de {label}, agrupados por categoría. Elige una para escuchar sus sonidos y ver quién los grabó.</>
+      )}
     </p>
     <p><a class="pill pill-link" href="/">Juega a adivinar</a></p>
-    <ul class="category-links">
-      {cats.map((k) => (
-        <li>
-          <a href={categoryPath(collection, k)}>
-            <span class="category-links-name">{k.name}</span>
-            <span class="category-links-count">{k.count} sonido{k.count === 1 ? '' : 's'}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
+
+    {single ? (
+      <ul class="sound-links sound-links-emoji category-sounds">
+        {collection.sounds.map((s) => (
+          <li><a href={soundPath(s)}><span aria-hidden="true">{s.emoji}</span> {s.name}</a></li>
+        ))}
+      </ul>
+    ) : (
+      <ul class="category-links">
+        {cats.map((k) => (
+          <li>
+            <a href={categoryPath(collection, k)}>
+              <span class="category-links-name">{k.name}</span>
+              <span class="category-links-count">{k.count} sonido{k.count === 1 ? '' : 's'}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
   </main>
 </Base>

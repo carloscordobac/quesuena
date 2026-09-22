@@ -6,11 +6,15 @@ import { categoriesWithSounds, categoryPath, getCatalog, soundPath, type Catalog
 import { breadcrumbLd } from '../../../lib/seo';
 
 // Una página por categoría con sonidos: /animales/granja/, /animales/aves/…
+// Si la colección solo tiene una categoría, no hace falta esta página intermedia:
+// el hub de la colección ya lista los sonidos directamente (ver [collection]/index.astro).
 export const getStaticPaths = (async () => {
   const catalog = await getCatalog();
-  return catalog.flatMap((c) =>
-    categoriesWithSounds(c).map((k) => ({ params: { collection: c.id, category: k.id }, props: { collection: c, category: k } })),
-  );
+  return catalog.flatMap((c) => {
+    const cats = categoriesWithSounds(c);
+    if (cats.length < 2) return [];
+    return cats.map((k) => ({ params: { collection: c.id, category: k.id }, props: { collection: c, category: k } }));
+  });
 }) satisfies GetStaticPaths;
 
 const { collection, category } = Astro.props as { collection: CatalogCollection; category: CatalogCategory & { count: number } };

@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { categoryPath, getCatalog, soundPath, type CatalogCollection, type CatalogSound } from '../../lib/catalog';
+import { categoriesWithSounds, categoryPath, getCatalog, soundPath, type CatalogCollection, type CatalogSound } from '../../lib/catalog';
 import { breadcrumbLd, isoDuration, soundDescription, soundHeading, soundTitle } from '../../lib/seo';
 import licenses from '../../lib/licenses.json';
 
@@ -25,6 +25,11 @@ const audioSrc = `${audioBase}${s.file}`;
 const audioUrl = new URL(audioSrc, site).href;
 const url = new URL(soundPath(s), site).href;
 const catPath = categoryPath(collection, category);
+// Colección con una sola categoría: no hay página de categoría intermedia (ver [category]/index.astro),
+// así que las migas y el enlace bajo el título van directos a la colección, sin ese nivel.
+const single = categoriesWithSounds(collection).length === 1;
+const catHref = single ? `/${collection.id}/` : catPath;
+const collLabel = collection.name.toLocaleLowerCase('es');
 
 const heading = soundHeading(s);
 const title = soundTitle(s);
@@ -41,7 +46,7 @@ const jsonLd = [
   breadcrumbLd([
     { name: 'Inicio', url: new URL('/', site).href },
     { name: collection.name, url: new URL(`/${collection.id}/`, site).href },
-    { name: category.name, url: new URL(catPath, site).href },
+    ...(single ? [] : [{ name: category.name, url: new URL(catPath, site).href }]),
     { name: s.name, url },
   ]),
   {
@@ -66,14 +71,14 @@ const jsonLd = [
       items={[
         { name: 'Inicio', href: '/' },
         { name: collection.name, href: `/${collection.id}/` },
-        { name: category.name, href: catPath },
+        ...(single ? [] : [{ name: category.name, href: catPath }]),
         { name: s.name },
       ]}
     />
 
     <h1 class="page-title">{heading}</h1>
     <p class="page-lead">
-      <a href={catPath}>{category.name}</a>{s.species && <> · {s.species}</>}
+      <a href={catHref}>{category.name}</a>{s.species && <> · {s.species}</>}
     </p>
 
     <audio class="player" controls preload="none" aria-label={`Escuchar: ${heading}`}>
@@ -97,7 +102,7 @@ const jsonLd = [
 
     {related.length > 0 && (
       <section class="credit-section">
-        <h2>Más sonidos de la categoría {category.name}</h2>
+        <h2>Más sonidos de {single ? collLabel : `la categoría ${category.name}`}</h2>
         <ul class="sound-links">
           {related.map((r) => (
             <li><a href={soundPath(r)}>{r.name}</a></li>
