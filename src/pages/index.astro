@@ -71,16 +71,19 @@ const description = `Escucha ${total} sonidos reales de animales al azar y adivi
     <section class="intro explore">
       <h2>Explora por categoría</h2>
       <ul class="category-links">
-        {catalog.flatMap((c) =>
-          categoriesWithSounds(c).map((k) => (
+        {catalog.flatMap((c) => {
+          const catsC = categoriesWithSounds(c);
+          // Con una sola categoría no hay página de categoría (ver [category]/index.astro): se enlaza al hub.
+          const single = catsC.length === 1;
+          return catsC.map((k) => (
             <li>
-              <a href={categoryPath(c, k)}>
-                <span class="category-links-name">{catalog.length > 1 ? `${c.name}: ${k.name}` : k.name}</span>
+              <a href={single ? `/${c.id}/` : categoryPath(c, k)}>
+                <span class="category-links-name">{single ? c.name : catalog.length > 1 ? `${c.name}: ${k.name}` : k.name}</span>
                 <span class="category-links-count">{k.count} sonido{k.count === 1 ? '' : 's'}</span>
               </a>
             </li>
-          )),
-        )}
+          ));
+        })}
       </ul>
     </section>
   </main>

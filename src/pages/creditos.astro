@@ -8,25 +8,27 @@ const originLabel = { grabacion: '', recreacion: 'Recreación', sintetico: 'Soni
 ---
 <Base
   title="Créditos de los sonidos · ¿Qué suena?"
-  description="Autores, licencias y enlaces de origen de las grabaciones reales que suenan en ¿Qué suena?, publicadas en Wikimedia Commons, archive.org y Pixabay."
+  description="Autores, licencias y origen de los sonidos: grabaciones reales y recreaciones de diseño sonoro, en Wikimedia Commons, archive.org, Freesound y Pixabay."
   path="/creditos/"
 >
   <main class="page">
     <h1 class="page-title">Créditos de los sonidos</h1>
     <p class="page-lead">
-      Los sonidos son grabaciones de otras personas, publicadas con licencias abiertas en Wikimedia Commons, archive.org y Pixabay.
-      Están recortados y con el volumen igualado. Cada uno conserva su licencia original: las CC BY-SA exigen mantener esta
-      atribución y compartir las adaptaciones con la misma licencia.
+      Los sonidos son grabaciones reales o recreaciones de diseño sonoro (marcadas como tal), obra de otras personas y publicadas
+      con licencias abiertas en Wikimedia Commons, archive.org, Freesound y Pixabay. Están recortados y con el volumen igualado.
+      Cada uno conserva su licencia original: las CC BY-SA exigen mantener esta atribución y compartir las adaptaciones con la misma licencia.
     </p>
 
-    {catalog.map((c) => (
-      <section class="credit-section">
-        <h2>{c.name}</h2>
-        {c.categories
-          .filter((k) => c.sounds.some((s) => s.category === k.id))
-          .map((k) => (
+    {catalog.map((c) => {
+      const cats = c.categories.filter((k) => c.sounds.some((s) => s.category === k.id));
+      // Colección con una sola categoría del mismo nombre que ella (p. ej. Dinosaurios): el h3 no aporta nada, se omite.
+      const skipSubheading = cats.length === 1 && cats[0]!.name === c.name;
+      return (
+        <section class="credit-section">
+          <h2>{c.name}</h2>
+          {cats.map((k) => (
             <>
-              <h3>{k.name}</h3>
+              {!skipSubheading && <h3>{k.name}</h3>}
               <ul class="credit-list">
                 {c.sounds
                   .filter((s) => s.category === k.id)
@@ -43,7 +45,8 @@ const originLabel = { grabacion: '', recreacion: 'Recreación', sintetico: 'Soni
               </ul>
             </>
           ))}
-      </section>
-    ))}
+        </section>
+      );
+    })}
   </main>
 </Base>
